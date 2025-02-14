@@ -51,7 +51,7 @@ Load the prompts you create with these functions using \code{\link[=directory_lo
 (which is automatically called when the package loads).
 }
 \examples{
-\dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+if (interactive()) {
 # create a new helper for chore `"boop"` that replaces the selected text:
 prompt_new("boop")
 
@@ -85,7 +85,7 @@ prompt_new(
       "58c9b4da/summarize-prefix.md"
     )
 )
-\dontshow{\}) # examplesIf}
+}
 }
 \seealso{
 The \link{directory} help-page for more on working with prompts in

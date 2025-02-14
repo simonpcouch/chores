@@ -24,7 +24,6 @@
 #' is registered (or unregistered) with the chores package.
 #'
 #' @name helper_add_remove
-#' @export
 .helper_add <- function(
     chore,
     prompt = NULL,

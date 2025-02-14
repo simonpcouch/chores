@@ -57,13 +57,15 @@
 #' for more on adding your own helper prompts, sharing them with others, and
 #' using prompts from others.
 #'
-#' @examplesIf FALSE
+#' @examples
 #' # print out the current prompt directory
-#' directory_get()
+#' directory_path()
 #'
 #' # list out prompts currently in the directory
 #' directory_list()
 #'
+#' # sets options and creates files, so don't run automatically:
+#' \dontrun{
 #' # create a prompt in the prompt directory
 #' prompt_new("boop", "replace")
 #'
@@ -77,7 +79,7 @@
 #' # these are equivalent:
 #' directory_set("some/folder")
 #' options(.chores_dir = "some/folder")
-#'
+#' }
 #' @export
 directory_load <- function(dir = directory_path()) {
   prompt_base_names <- directory_base_names(dir)

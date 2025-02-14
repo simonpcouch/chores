@@ -25,9 +25,10 @@ with \code{\link[=prompt_new]{prompt_new()}}.
 }
 }
 \examples{
-\dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# requires an API key and sets options
+\dontrun{
 # to create a chat with claude:
-.init_helper()
+.init_helper(.chores_chat = ellmer::chat_claude())
 
 # or with OpenAI's 4o-mini:
 .init_helper(.chores_chat = ellmer::chat_openai(model = "gpt-4o-mini"))
@@ -38,5 +39,5 @@ with \code{\link[=prompt_new]{prompt_new()}}.
 options(
   .chores_chat = ellmer::chat_openai(model = "gpt-4o-mini")
 )
-\dontshow{\}) # examplesIf}
+}
 }

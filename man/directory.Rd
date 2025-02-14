@@ -73,13 +73,14 @@ the prompt directory, provide a \code{dir} argument to \code{directory_load()}.
 }
 
 \examples{
-\dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # print out the current prompt directory
-directory_get()
+directory_path()
 
 # list out prompts currently in the directory
 directory_list()
 
+# sets options and creates files, so don't run automatically:
+\dontrun{
 # create a prompt in the prompt directory
 prompt_new("boop", "replace")
 
@@ -93,7 +94,7 @@ directory_load()
 # these are equivalent:
 directory_set("some/folder")
 options(.chores_dir = "some/folder")
-\dontshow{\}) # examplesIf}
+}
 }
 \seealso{
 The "Custom helpers" vignette, at \code{vignette("custom", package = "chores")},

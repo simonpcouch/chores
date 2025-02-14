@@ -32,7 +32,8 @@
 #' Each `prompt_*()` function returns the file path to the created, edited, or
 #' removed filepath, invisibly.
 #'
-#' @examplesIf FALSE
+#' @examples
+#' if (interactive()) {
 #' # create a new helper for chore `"boop"` that replaces the selected text:
 #' prompt_new("boop")
 #'
@@ -66,7 +67,7 @@
 #'       "58c9b4da/summarize-prefix.md"
 #'     )
 #' )
-#'
+#' }
 #' @name prompt
 
 #' @rdname prompt
