@@ -32,7 +32,7 @@ the option \code{.chores_dir}).
 \item \code{directory_list()} enumerates all of the different prompts that currently
 live in the directory (and provides clickable links to each).
 \item \code{directory_load()} registers each of the prompts in the prompt
-directory with the chores package (via \code{\link[=.helper_add]{.helper_add()}}).
+directory with the chores package.
 }
 
 \link[=prompt]{Functions prefixed with} \verb{prompt*()} allow users to conveniently create, edit,
