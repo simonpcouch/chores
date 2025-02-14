@@ -27,6 +27,12 @@ Getting started with chores takes three steps.
 **1)** Install the chores package like so:
 
 ``` r
+install.packages("chores")
+```
+
+You can install the developmental version with:
+
+``` r
 pak::pak("simonpcouch/chores")
 ```
 
