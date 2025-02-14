@@ -85,7 +85,7 @@ As-is, the package provides ergonomic LLM assistants for R package development:
 
 Users have also contributed a number of helpers for a wide range of tasks--see `vignette("gallery", package = "chores")` for a gallery of user-contributed helpers!
 
-That said, all you need to create your own chore helper is a markdown file with some instructions on how you'd like it to work. See `prompt_new()` and `directory_load()` for more information, and [chorespable](https://github.com/simonpcouch/chorespable) for an example chores extension package.
+That said, all you need to create your own chore helper is a markdown file with some instructions on how you'd like it to work. See `prompt_new()` and `directory_load()` for more information, and [palpable](https://github.com/simonpcouch/palpable) for an example chores extension package.
 
 ## How much do helpers cost?
 

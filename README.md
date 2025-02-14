@@ -7,8 +7,6 @@
 
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-[![CRAN
-status](https://www.r-pkg.org/badges/version/chores)](https://CRAN.R-project.org/package=chores)
 [![R-CMD-check](https://github.com/simonpcouch/chores/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/simonpcouch/chores/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
@@ -104,7 +102,7 @@ user-contributed helpers!
 That said, all you need to create your own chore helper is a markdown
 file with some instructions on how you’d like it to work. See
 `prompt_new()` and `directory_load()` for more information, and
-[chorespable](https://github.com/simonpcouch/chorespable) for an example
+[palpable](https://github.com/simonpcouch/palpable) for an example
 chores extension package.
 
 ## How much do helpers cost?

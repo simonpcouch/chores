@@ -72,9 +72,9 @@ chores extension packages allow you to more flexibly share helper prompts with o
 * Place one markdown file per new chore helper in `inst/prompts/`. This folder will take the same format as the prompt directory described above.
 * Place a call to `chores::directory_load()` in the package's `.onLoad()`, referencing the extension package's `system.file("prompts", package = "yourpackage")`. This will automatically register your package's prompts with chores when the extension is loaded.
 
-For an example chores extension, see [simonpcouch/chorespable](https://github.com/simonpcouch/chorespable).
+For an example chores extension, see [simonpcouch/palpable](https://github.com/simonpcouch/palpable).
 
-chores extension packages also allow you to document what your helpers are for and how they tend to behave in context; situate your documentation files at `?chore_helper`, replacing `chore` with your new chore helper's name. Then, with your package loaded, users can view a high-level description of the helper's behavior and a gallery of examples. See `?cli_helper` for an example helper help-page, with source code [here](https://github.com/simonpcouch/chores/blob/main/R/doc-chores-cli.R).
+chores extension packages also allow you to document what your helpers are for and how they tend to behave in context; situate your documentation files at `?chore_helper`, replacing `chore` with your new chore helper's name. Then, with your package loaded, users can view a high-level description of the helper's behavior and a gallery of examples. See `?cli_helper` for an example helper help-page, with source code [here](https://github.com/simonpcouch/chores/blob/main/R/doc-helper-cli.R).
 
 ## Using others' custom helpers
 
