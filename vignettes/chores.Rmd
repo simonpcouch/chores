@@ -52,7 +52,7 @@ Chore helpers are interfaced with the via the chores addin. For easiest access, 
 
 **In RStudio**, navigate to `Tools > Modify Keyboard Shortcuts > Search "Chores"`---we suggest `Ctrl+Alt+C` (or `Ctrl+Cmd+C` on macOS).
 
-**In Positron**, you'll need to open the command palette, run "Open Keyboard Shortcuts (JSON)", and paste the following into your `keybindings.json()`:
+**In Positron**, you'll need to open the command palette, run "Open Keyboard Shortcuts (JSON)", and paste the following into your `keybindings.json`:
 
 ```json
     {
