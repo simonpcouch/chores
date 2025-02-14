@@ -20,6 +20,5 @@ reference:
     - cli_helper
   - title: Developer Infrastructure
     contents:
-    - helper_add_remove
     - .init_helper
     - .init_addin
