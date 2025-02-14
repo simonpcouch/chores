@@ -78,7 +78,11 @@
             $('.selectize-input input').focus();
           }, 100);
         });
-      "))
+      ")),
+      shiny::tags$div(
+        style = "position: absolute; bottom: 10px; left: 0; right: 0; color: #999;",
+        "Press [Enter] to submit."
+      )
     )
   )
 
