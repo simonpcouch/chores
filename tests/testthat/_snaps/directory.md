@@ -28,26 +28,6 @@
       Prompt "bop-bad.md" has an unrecognized `interface` noted in its filename and will not be registered with chores.
       `interface` (following the hyphen) must be one of `replace`, `prefix`, or `suffix`.
 
-# directory_list works
-
-    Code
-      directory_list()
-    Message
-      
-      -- Prompts:  
-      * 'test-prompt-dir/boop-replace.md'
-      * 'test-prompt-dir/wop-prefix.md'
-
----
-
-    Code
-      directory_list()
-    Message
-      
-      -- Prompts:  
-      * 'test-prompt-dir/boop-replace.md'
-      * 'test-prompt-dir/wop-prefix.md'
-
 # directory_set works
 
     Code
