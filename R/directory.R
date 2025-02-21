@@ -141,17 +141,7 @@ directory_list <- function() {
 #' @rdname directory
 #' @export
 directory_path <- function() {
-  .chores_dir <- getOption(".chores_dir", default = NULL)
-
-  if (is.null(.chores_dir)) {
-    cli::cli_warn(c(
-      "No {.pkg chores} prompt directory configured.",
-      'Set one in your {.file .Rprofile} using e.g.
-       {.code directory_set(file.path("~", ".config", "chores"))}.'
-    ))
-  }
-
-  .chores_dir
+  getOption(".chores_dir", default = file.path("~", ".config", "chores"))
 }
 
 #' @rdname directory
