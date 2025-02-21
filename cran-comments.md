@@ -2,8 +2,16 @@
 
 There's 1 R CMD check NOTE, as this is a new release.
 
-While there are not formal references for the methods implemented in this package, relevant software is mentioned in single quotes in the Description.
+> If there are references describing the methods in your package...
 
-The core functionality in this package requires both an API key and interactivity with the RStudio API, so many of the examples in the package's documentation are wrapped in `\dontrun{}` with notes on prerequisites. I've ensured that test coverage is as complete as possible, though many of those tests focus on unexported internals to allow for mocking inputs.
+Unfortunately, there are not formal references for the methods implemented in this package. Relevant software is mentioned in single quotes in the Description.
+
+> Please add \value to .Rd files regarding exported methods and explain the functions results in the documentation.
+
+Added docs on return value for this missing functions, thanks!
+
+> Please ensure that your functions do not write by default or in your examples/vignettes/tests in the user's home filespace... In your examples/vignettes/tests you can write to tempdir().
+
+Thanks, examples/tests/vignettes now use a tempdir.
 
 Thank you all for your work.
