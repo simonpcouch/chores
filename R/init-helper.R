@@ -15,6 +15,9 @@
 #' so e.g. set `options(.chores_chat = ellmer::chat_claude())` in your
 #' `.Rprofile` to configure chores with ellmer every time you start a new R session.
 #'
+#' @returns
+#' A Helper object, which is a subclass of an ellmer chat.
+#'
 #' @examples
 #' # requires an API key and sets options
 #' \dontrun{

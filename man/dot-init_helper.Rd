@@ -16,6 +16,9 @@ though custom helpers can be added with \code{\link[=prompt_new]{prompt_new()}}.
 so e.g. set \code{options(.chores_chat = ellmer::chat_claude())} in your
 \code{.Rprofile} to configure chores with ellmer every time you start a new R session.}
 }
+\value{
+A Helper object, which is a subclass of an ellmer chat.
+}
 \description{
 \strong{Users typically should not need to call this function.}
 \itemize{
