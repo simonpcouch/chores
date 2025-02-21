@@ -17,8 +17,8 @@
 <script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="A Collection of Large Language Model Assistants">
-<meta name="description" content="Provides a collection of ergonomic large language model assistants designed to help you complete repetitive, hard-to-automate tasks quickly. After selecting some code, press the keyboard shortcut you've chosen to trigger the package app, select an assistant, and watch your code be rewritten. While the package ships with a number of helpers for R package development, users can create custom helpers just by writing some instructions in a markdown file.">
-<meta property="og:description" content="Provides a collection of ergonomic large language model assistants designed to help you complete repetitive, hard-to-automate tasks quickly. After selecting some code, press the keyboard shortcut you've chosen to trigger the package app, select an assistant, and watch your code be rewritten. While the package ships with a number of helpers for R package development, users can create custom helpers just by writing some instructions in a markdown file.">
+<meta name="description" content="Provides a collection of ergonomic large language model assistants designed to help you complete repetitive, hard-to-automate tasks quickly. After selecting some code, press the keyboard shortcut you've chosen to trigger the package app, select an assistant, and watch your chore be carried out. While the package ships with a number of chore helpers for R package development, users can create custom helpers just by writing some instructions in a markdown file.">
+<meta property="og:description" content="Provides a collection of ergonomic large language model assistants designed to help you complete repetitive, hard-to-automate tasks quickly. After selecting some code, press the keyboard shortcut you've chosen to trigger the package app, select an assistant, and watch your chore be carried out. While the package ships with a number of chore helpers for R package development, users can create custom helpers just by writing some instructions in a markdown file.">
 <meta property="og:image" content="https://simonpcouch.github.io/chores/logo.png">
 </head>
 <body>
@@ -29,7 +29,7 @@
 
     <a class="navbar-brand me-2" href="index.html">chores</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.4</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -78,21 +78,24 @@
 <p>Getting started with chores takes three steps.</p>
 <p><strong>1)</strong> Install the chores package like so:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"chores"</span><span class="op">)</span></span></code></pre></div>
+<p>You can install the developmental version with:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"simonpcouch/chores"</span><span class="op">)</span></span></code></pre></div>
 <p><strong>2)</strong> Then, you need to configure chores with an <a href="https://ellmer.tidyverse.org/" class="external-link">ellmer</a> model. chores uses ellmer under the hood, so any model that you can chat with through ellmer is also supported by chores. To configure chores with ellmer, set the option <code>.chores_chat</code> to any ellmer Chat. For example, to use Claude, you’d write <code>options(.chores_chat = ellmer::chat_claude())</code>, possibly in your <code>.Rprofile</code> so that chores is ready to go every time you start R. To learn more, see the <a href="https://simonpcouch.github.io/chores/articles/chores.html">Getting started with chores</a> vignette.</p>
 <p><strong>3)</strong> Chore helpers are interfaced with the via the chores addin. For easiest access, we recommend registering the chores addin to a keyboard shortcut.</p>
 <p><strong>In RStudio</strong>, navigate to <code>Tools &gt; Modify Keyboard Shortcuts &gt; Search "Chores"</code>—we suggest <code>Ctrl+Alt+C</code> (or <code>Ctrl+Cmd+C</code> on macOS).</p>
 <p><strong>In Positron</strong>, you’ll need to open the command palette, run “Open Keyboard Shortcuts (JSON)”, and paste the following into your <code>keybindings.json</code>:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>    <span class="fu">{</span></span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>        <span class="dt">"key"</span><span class="fu">:</span> <span class="st">"Ctrl+Cmd+C"</span><span class="fu">,</span></span>
-<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>        <span class="dt">"command"</span><span class="fu">:</span> <span class="st">"workbench.action.executeCode.console"</span><span class="fu">,</span></span>
-<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>        <span class="dt">"when"</span><span class="fu">:</span> <span class="st">"editorTextFocus"</span><span class="fu">,</span></span>
-<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>        <span class="dt">"args"</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a>            <span class="dt">"langId"</span><span class="fu">:</span> <span class="st">"r"</span><span class="fu">,</span></span>
-<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a>            <span class="dt">"code"</span><span class="fu">:</span> <span class="st">"chores::.init_addin()"</span><span class="fu">,</span></span>
-<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a>            <span class="dt">"focus"</span><span class="fu">:</span> <span class="kw">true</span></span>
-<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a>        <span class="fu">}</span></span>
-<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a>    <span class="fu">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>        <span class="dt">"key"</span><span class="fu">:</span> <span class="st">"Ctrl+Cmd+C"</span><span class="fu">,</span></span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>        <span class="dt">"command"</span><span class="fu">:</span> <span class="st">"workbench.action.executeCode.console"</span><span class="fu">,</span></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>        <span class="dt">"when"</span><span class="fu">:</span> <span class="st">"editorTextFocus"</span><span class="fu">,</span></span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>        <span class="dt">"args"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a>            <span class="dt">"langId"</span><span class="fu">:</span> <span class="st">"r"</span><span class="fu">,</span></span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a>            <span class="dt">"code"</span><span class="fu">:</span> <span class="st">"chores::.init_addin()"</span><span class="fu">,</span></span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a>            <span class="dt">"focus"</span><span class="fu">:</span> <span class="kw">true</span></span>
+<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a>        <span class="fu">}</span></span>
+<span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a>    <span class="fu">}</span></span></code></pre></div>
 <p>The analogous keybinding on non-macOS is <code>Ctrl+Alt+C</code>. That said, change the <code>"key"</code> entry to any keybinding you wish!</p>
 <p>Once those steps are completed, you’re ready to use helpers with a keyboard shortcut.</p>
 </div>
@@ -114,7 +117,7 @@
 </li>
 </ul>
 <p>Users have also contributed a number of helpers for a wide range of tasks–see <code><a href="articles/gallery.html">vignette("gallery", package = "chores")</a></code> for a gallery of user-contributed helpers!</p>
-<p>That said, all you need to create your own chore helper is a markdown file with some instructions on how you’d like it to work. See <code><a href="reference/prompt.html">prompt_new()</a></code> and <code><a href="reference/directory.html">directory_load()</a></code> for more information, and <a href="https://github.com/simonpcouch/chorespable" class="external-link">chorespable</a> for an example chores extension package.</p>
+<p>That said, all you need to create your own chore helper is a markdown file with some instructions on how you’d like it to work. See <code><a href="reference/prompt.html">prompt_new()</a></code> and <code><a href="reference/directory.html">directory_load()</a></code> for more information, and <a href="https://github.com/simonpcouch/palpable" class="external-link">palpable</a> for an example chores extension package.</p>
 </div>
 <div class="section level2">
 <h2 id="how-much-do-helpers-cost">How much do helpers cost?<a class="anchor" aria-label="anchor" href="#how-much-do-helpers-cost"></a>
@@ -125,6 +128,7 @@
   </main><aside class="col-md-3"><div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
+<li><a href="https://cloud.r-project.org/package=chores" class="external-link">View on CRAN</a></li>
 <li><a href="https://github.com/simonpcouch/chores/" class="external-link">Browse source code</a></li>
 <li><a href="https://github.com/simonpcouch/chores/issues" class="external-link">Report a bug</a></li>
 </ul>
@@ -166,7 +170,6 @@
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
-<li><a href="https://CRAN.R-project.org/package=chores" class="external-link"><img src="https://www.r-pkg.org/badges/version/chores" alt="CRAN status"></a></li>
 <li><a href="https://github.com/simonpcouch/chores/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/simonpcouch/chores/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
 </ul>
 </div>
