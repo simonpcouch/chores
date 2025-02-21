@@ -6,14 +6,13 @@
 #' `directory_*()` functions allow users to interface with the directory,
 #' making new "chores" available:
 #'
-#' * `directory_path()` returns the path to the prompt directory, which
-#' defaults to `~/.config/chores`.
+#' * `directory_path()` returns the path to the prompt directory.
 #' * `directory_set()` changes the path to the prompt directory (by setting
 #'   the option `.chores_dir`).
 #' * `directory_list()` enumerates all of the different prompts that currently
 #'   live in the directory (and provides clickable links to each).
 #' * `directory_load()` registers each of the prompts in the prompt
-#'   directory with the chores package (via [.helper_add()]).
+#'   directory with the chores package.
 #'
 #' [Functions prefixed with][prompt] `prompt*()` allow users to conveniently create, edit,
 #' and delete the prompts in chores' prompt directory.
@@ -51,15 +50,28 @@
 #' loading the package, just set the `.chores_dir` option with
 #' `options(.chores_dir = some_dir)`. To load a directory of files that's not
 #' the prompt directory, provide a `dir` argument to `directory_load()`.
+#'
+#' @returns
+#' * `directory_path()` returns the path to the prompt directory (which is
+#'   not created by default unless explicitly requested by the user).
+#' * `directory_set()` return the path to the new prompt directory.
+#' * `directory_list()` returns the file paths of all of the prompts that
+#'   currently live in the directory (and provides clickable links to each).
+#' * `directory_load()` returns `NULL` invisibly.
+#'
 #' @name directory
 #'
-#' @seealso The "Custom helpers" vignette, at `vignette("custom", package = "chores")`,
-#' for more on adding your own helper prompts, sharing them with others, and
-#' using prompts from others.
+#' @seealso The "Custom helpers" vignette, at
+#' `vignette("custom", package = "chores")`,for more on adding your own
+#' helper prompts, sharing them with others, and using prompts from others.
 #'
-#' @examplesIf FALSE
+#' @examples
+#' # choose a path for the prompt directory
+#' tmp_dir <- withr::local_tempdir()
+#' directory_set(tmp_dir)
+#'
 #' # print out the current prompt directory
-#' directory_get()
+#' directory_path()
 #'
 #' # list out prompts currently in the directory
 #' directory_list()
@@ -73,10 +85,6 @@
 #' # register the prompt with the package
 #' # (this will also happen automatically on reload)
 #' directory_load()
-#'
-#' # these are equivalent:
-#' directory_set("some/folder")
-#' options(.chores_dir = "some/folder")
 #'
 #' @export
 directory_load <- function(dir = directory_path()) {
@@ -94,6 +102,8 @@ directory_load <- function(dir = directory_path()) {
 
     .helper_add(chore = chore, prompt = prompt, interface = interface)
   }
+
+  invisible()
 }
 
 #' @rdname directory
@@ -131,7 +141,17 @@ directory_list <- function() {
 #' @rdname directory
 #' @export
 directory_path <- function() {
-  getOption(".chores_dir", default = file.path("~", ".config", "chores"))
+  .chores_dir <- getOption(".chores_dir", default = NULL)
+
+  if (is.null(.chores_dir)) {
+    cli::cli_warn(c(
+      "No {.pkg chores} prompt directory configured.",
+      'Set one in your {.file .Rprofile} using e.g.
+       {.code directory_set(file.path("~", ".config", "chores"))}.'
+    ))
+  }
+
+  .chores_dir
 }
 
 #' @rdname directory

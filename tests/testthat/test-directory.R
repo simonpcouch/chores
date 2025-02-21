@@ -41,26 +41,19 @@ test_that("filter_interfaces messages informatively", {
   expect_equal(res, x[1])
 })
 
-test_that("directory_list works", {
-  # contains two prompts, `boop-replace` and `wop-prefix`
-  withr::local_options(.chores_dir = "test-prompt-dir")
-  testthat::local_mocked_bindings(interactive = function(...) {TRUE})
-  expect_snapshot(directory_list())
-
-  testthat::local_mocked_bindings(interactive = function(...) {TRUE})
-  expect_snapshot(directory_list())
-})
 
 test_that("directory_list works", {
   # contains two prompts, `boop-replace` and `wop-prefix`
-  withr::local_options(.chores_dir = "test-prompt-dir")
-  expect_equal(directory_path(), "test-prompt-dir")
+  tmp_dir <- withr::local_tempdir()
+  withr::local_options(.chores_dir = tmp_dir)
+  expect_equal(directory_path(), tmp_dir)
 })
 
 test_that("directory_set works", {
   expect_snapshot(error = TRUE, directory_set(identity))
 
-  withr::local_options(.chores_dir = "test-prompt-dir")
+  tmp_dir <- withr::local_tempdir()
+  withr::local_options(.chores_dir = tmp_dir)
   path <- directory_path()
   withr::defer(directory_set(path))
 

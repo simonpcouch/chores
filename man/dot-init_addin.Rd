@@ -19,3 +19,8 @@ and/or register the addin with a shortcut via
 \verb{Tools > Modify Keyboard Shortcuts > Search "Chores"}--we suggest \code{Ctrl+Alt+C}
 (or \code{Ctrl+Cmd+C} on macOS).
 }
+\examples{
+if (interactive()) {
+  .init_addin()
+}
+}

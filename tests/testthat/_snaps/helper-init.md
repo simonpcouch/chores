@@ -45,5 +45,5 @@
     Condition
       Error in `.init_helper()`:
       ! No helpers for chore `beepBopBoop` registered.
-      i See `.helper_add()`.
+      i See `prompt_new()`.
 

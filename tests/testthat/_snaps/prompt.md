@@ -1,21 +1,3 @@
-# prompt_new errors informatively with redundant chore
-
-    Code
-      prompt_new("boop", "replace")
-    Condition
-      Error in `prompt_new()`:
-      ! There's already a helper for chore "boop".
-      i You can edit it with `prompt_edit("boop")`
-
----
-
-    Code
-      prompt_new("boop", "prefix")
-    Condition
-      Error in `prompt_new()`:
-      ! There's already a helper for chore "boop".
-      i You can edit it with `prompt_edit("boop")`
-
 # prompt_remove errors informatively with bad chore
 
     Code

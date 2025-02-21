@@ -31,8 +31,7 @@
 #'
 #' @section Gallery:
 #'
-#' This section includes a handful of examples
-#' "[from the wild](https://github.com/hadley/elmer/tree/e497d627e7be01206df6f1420ca36235141dc22a/R)"
+#' This section includes a handful of examples "from the wild"
 #' and are generated with the recommended model, Claude Sonnet 3.5.
 #'
 #' Documenting a function factory:

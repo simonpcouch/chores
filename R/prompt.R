@@ -18,7 +18,12 @@
 #' Load the prompts you create with these functions using [directory_load()]
 #' (which is automatically called when the package loads).
 #'
-#' @inheritParams helper_add_remove
+#' @param chore A single string giving a descriptor of the helper's functionality.
+#' Cand only contain letters and numbers.
+#' @param interface One of `"replace"`, `"prefix"`, or `"suffix"`, describing
+#' how the helper will interact with the selection. For example, the
+#' [cli helper][cli_helper] `"replace"`s the selection, while the
+#' [roxygen helper][roxygen_helper] `"prefixes"` the selected code with documentation.
 #' @param contents Optional. Path to a markdown file with contents that will
 #' "pre-fill" the file. Anything file ending in `.md` or `.markdown` that can be
 #' read with `readLines()` is fair game; this could be a local file, a "raw"
@@ -32,7 +37,8 @@
 #' Each `prompt_*()` function returns the file path to the created, edited, or
 #' removed filepath, invisibly.
 #'
-#' @examplesIf FALSE
+#' @examples
+#' if (interactive()) {
 #' # create a new helper for chore `"boop"` that replaces the selected text:
 #' prompt_new("boop")
 #'
@@ -66,7 +72,7 @@
 #'       "58c9b4da/summarize-prefix.md"
 #'     )
 #' )
-#'
+#' }
 #' @name prompt
 
 #' @rdname prompt

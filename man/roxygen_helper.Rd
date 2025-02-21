@@ -36,8 +36,7 @@ valid documentation entries, and it would cost around
 \section{Gallery}{
 
 
-This section includes a handful of examples
-"\href{https://github.com/hadley/elmer/tree/e497d627e7be01206df6f1420ca36235141dc22a/R}{from the wild}"
+This section includes a handful of examples "from the wild"
 and are generated with the recommended model, Claude Sonnet 3.5.
 
 Documenting a function factory:

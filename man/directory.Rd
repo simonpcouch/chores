@@ -19,20 +19,29 @@ directory_set(dir)
 \arguments{
 \item{dir}{Path to a directory of markdown files--see \code{Details} for more.}
 }
+\value{
+\itemize{
+\item \code{directory_path()} returns the path to the prompt directory (which is
+not created by default unless explicitly requested by the user).
+\item \code{directory_set()} return the path to the new prompt directory.
+\item \code{directory_list()} returns the file paths of all of the prompts that
+currently live in the directory (and provides clickable links to each).
+\item \code{directory_load()} returns \code{NULL} invisibly.
+}
+}
 \description{
 The chores package's prompt directory is a directory of markdown files that
 is automatically registered with the chores package on package load.
 \verb{directory_*()} functions allow users to interface with the directory,
 making new "chores" available:
 \itemize{
-\item \code{directory_path()} returns the path to the prompt directory, which
-defaults to \verb{~/.config/chores}.
+\item \code{directory_path()} returns the path to the prompt directory.
 \item \code{directory_set()} changes the path to the prompt directory (by setting
 the option \code{.chores_dir}).
 \item \code{directory_list()} enumerates all of the different prompts that currently
 live in the directory (and provides clickable links to each).
 \item \code{directory_load()} registers each of the prompts in the prompt
-directory with the chores package (via \code{\link[=.helper_add]{.helper_add()}}).
+directory with the chores package.
 }
 
 \link[=prompt]{Functions prefixed with} \verb{prompt*()} allow users to conveniently create, edit,
@@ -73,9 +82,12 @@ the prompt directory, provide a \code{dir} argument to \code{directory_load()}.
 }
 
 \examples{
-\dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# choose a path for the prompt directory
+tmp_dir <- withr::local_tempdir()
+directory_set(tmp_dir)
+
 # print out the current prompt directory
-directory_get()
+directory_path()
 
 # list out prompts currently in the directory
 directory_list()
@@ -90,13 +102,9 @@ directory_list()
 # (this will also happen automatically on reload)
 directory_load()
 
-# these are equivalent:
-directory_set("some/folder")
-options(.chores_dir = "some/folder")
-\dontshow{\}) # examplesIf}
 }
 \seealso{
-The "Custom helpers" vignette, at \code{vignette("custom", package = "chores")},
-for more on adding your own helper prompts, sharing them with others, and
-using prompts from others.
+The "Custom helpers" vignette, at
+\code{vignette("custom", package = "chores")},for more on adding your own
+helper prompts, sharing them with others, and using prompts from others.
 }

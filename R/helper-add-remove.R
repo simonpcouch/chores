@@ -1,30 +1,29 @@
-#' Registering helpers
-#'
-#' @description
-#' Users can create custom helpers using the `.helper_add()` function; after passing
-#' the function a chore and prompt, the helper will be available in the
-#' [chores addin][.init_addin].
-#'
-#' **Most users should not need to interact with these functions.**
-#' [prompt_new()] and friends can be used to create prompts for new helpers, and
-#' those helpers can be registered with chores using [directory_load()] and friends.
-#' The helpers created by those functions will be persistent across sessions.
-#'
-#' @param chore A single string giving a descriptor of the helper's functionality.
-#' Cand only contain letters and numbers.
-#' @param prompt A single string giving the system prompt. In most cases, this
-#' is a rather long string, containing several newlines.
-#' @param interface One of `"replace"`, `"prefix"`, or `"suffix"`, describing
-#' how the helper will interact with the selection. For example, the
-#' [cli helper][cli_helper] `"replace"`s the selection, while the
-#' [roxygen helper][roxygen_helper] `"prefixes"` the selected code with documentation.
-#'
-#' @returns
-#' `NULL`, invisibly. Called for its side effect: a helper for chore `chore`
-#' is registered (or unregistered) with the chores package.
-#'
-#' @name helper_add_remove
-#' @export
+# Registering helpers
+#
+# @description
+# Users can create custom helpers using the `.helper_add()` function; after passing
+# the function a chore and prompt, the helper will be available in the
+# [chores addin][.init_addin].
+#
+# **Most users should not need to interact with these functions.**
+# [prompt_new()] and friends can be used to create prompts for new helpers, and
+# those helpers can be registered with chores using [directory_load()] and friends.
+# The helpers created by those functions will be persistent across sessions.
+#
+# @param chore A single string giving a descriptor of the helper's functionality.
+# Cand only contain letters and numbers.
+# @param prompt A single string giving the system prompt. In most cases, this
+# is a rather long string, containing several newlines.
+# @param interface One of `"replace"`, `"prefix"`, or `"suffix"`, describing
+# how the helper will interact with the selection. For example, the
+# [cli helper][cli_helper] `"replace"`s the selection, while the
+# [roxygen helper][roxygen_helper] `"prefixes"` the selected code with documentation.
+#
+# @returns
+# `NULL`, invisibly. Called for its side effect: a helper for chore `chore`
+# is registered (or unregistered) with the chores package.
+#
+# @name helper_add_remove
 .helper_add <- function(
     chore,
     prompt = NULL,
@@ -39,7 +38,7 @@
   invisible()
 }
 
-#' @rdname helper_add_remove
+# @rdname helper_add_remove
 .helper_remove <- function(chore) {
   check_string(chore)
   if (!chore %in% list_helpers()) {

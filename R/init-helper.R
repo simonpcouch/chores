@@ -9,15 +9,20 @@
 #'
 #' @param chore The identifier for a helper prompt. By default one
 #' of `r glue::glue_collapse(paste0("[", glue::double_quote(default_chores), "]", "[", default_chores, "_helper", "]"), ", ", last = " or ")`,
-#' though custom helpers can be added with [.helper_add()].
+#' though custom helpers can be added with [prompt_new()].
 #' @param .chores_chat An ellmer Chat, e.g.
 #' `function() ellmer::chat_claude()`. Defaults to the option by the same name,
 #' so e.g. set `options(.chores_chat = ellmer::chat_claude())` in your
 #' `.Rprofile` to configure chores with ellmer every time you start a new R session.
 #'
-#' @examplesIf FALSE
+#' @returns
+#' A Helper object, which is a subclass of an ellmer chat.
+#'
+#' @examples
+#' # requires an API key and sets options
+#' \dontrun{
 #' # to create a chat with claude:
-#' .init_helper()
+#' .init_helper(.chores_chat = ellmer::chat_claude())
 #'
 #' # or with OpenAI's 4o-mini:
 #' .init_helper(.chores_chat = ellmer::chat_openai(model = "gpt-4o-mini"))
@@ -28,6 +33,7 @@
 #' options(
 #'   .chores_chat = ellmer::chat_openai(model = "gpt-4o-mini")
 #' )
+#' }
 #' @export
 .init_helper <- function(
     chore = NULL,
@@ -37,7 +43,7 @@
   if (!chore %in% list_helpers()) {
     cli::cli_abort(c(
       "No helpers for chore {.arg {chore}} registered.",
-      "i" = "See {.fn .helper_add}."
+      "i" = "See {.fn prompt_new}."
     ))
   }
 

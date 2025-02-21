@@ -13,6 +13,10 @@
 #' `NULL`, invisibly. Called for the side effect of launching the chores addin
 #' and interfacing with selected text.
 #'
+#' @examples
+#' if (interactive()) {
+#'   .init_addin()
+#' }
 #' @export
 .init_addin <- function() {
   if (is.null(fetch_chores_chat())) {
