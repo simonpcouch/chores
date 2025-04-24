@@ -1,5 +1,11 @@
 # chores (development version)
 
+* In the helper selection app, clicking a helper in the selectize will now 
+  submit the selected choice. Previously, the user would have to click the 
+  helper to select it _and then_ submit the selected choice by pressing 
+  Return/Enter (#87). This change aligns behavior in the UI when selecting 
+  helpers with a mouse click versus the up/down arrows.
+  
 # chores 0.1.0
 
 * Initial CRAN submission.

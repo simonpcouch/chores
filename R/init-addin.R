@@ -80,6 +80,13 @@
         $(document).ready(function() {
           setTimeout(function() {
             $('.selectize-input input').focus();
+            
+            // clicking an option in the selectize should submit the selection
+            $('select#helper').on('change', function() {
+              if (this.value) {
+                Shiny.setInputValue('done', true, {priority: 'event'});
+              }
+            });
           }, 100);
         });
       ")),
