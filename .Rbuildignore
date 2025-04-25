@@ -12,3 +12,4 @@ inst/figs/
 inst/slides/
 man-roxygen
 codecov.yml
+inst/example.R
