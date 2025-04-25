@@ -25,9 +25,9 @@
 #
 # @name helper_add_remove
 .helper_add <- function(
-    chore,
-    prompt = NULL,
-    interface = c("replace", "prefix", "suffix")
+  chore,
+  prompt = NULL,
+  interface = c("replace", "prefix", "suffix")
 ) {
   check_chore(chore)
   check_string(prompt)
@@ -64,10 +64,12 @@ parse_interface <- function(interface, chore, call = caller_env()) {
   if (isTRUE(identical(interface, supported_interfaces))) {
     interface <- interface[1]
   }
-  if (isTRUE(
-    length(interface) != 1 ||
-    !interface %in% supported_interfaces
-  )) {
+  if (
+    isTRUE(
+      length(interface) != 1 ||
+        !interface %in% supported_interfaces
+    )
+  ) {
     cli::cli_abort(
       "{.arg interface} should be one of {.or {.val {supported_interfaces}}}.",
       call = call
@@ -80,10 +82,11 @@ parse_interface <- function(interface, chore, call = caller_env()) {
       selection <- get_primary_selection(context)
       helper <- retrieve_helper(chore)$clone()
       streamy::stream(
-        generator =
-          # TODO: this is gnarly--revisit when helpers are just Chats
-          # or ensure selection$text isn't substituted
-          helper[[".__enclos_env__"]][["private"]]$.stream(selection$text),
+        # TODO: this is gnarly--revisit when helpers are just Chats
+        # or ensure selection$text isn't substituted
+        generator = helper[[".__enclos_env__"]][["private"]]$.stream(
+          selection$text
+        ),
         context = context,
         interface = interface
       )

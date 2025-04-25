@@ -82,10 +82,14 @@ prompt_new <- function(chore, interface, contents = NULL) {
   arg_match0(interface, supported_interfaces)
   check_string(contents, allow_null = TRUE)
 
-  current_path <- try_fetch(prompt_locate(chore), error = function(cnd) {NULL})
+  current_path <- try_fetch(prompt_locate(chore), error = function(cnd) {
+    NULL
+  })
   suggestion <- character(0)
   if (!chore %in% default_chores || !is.null(current_path)) {
-    suggestion <- c("i" = "You can edit it with {.code prompt_edit({.val {chore}})}")
+    suggestion <- c(
+      "i" = "You can edit it with {.code prompt_edit({.val {chore}})}"
+    )
   }
   if (chore %in% list_helpers() || !is.null(current_path)) {
     cli::cli_abort(c(

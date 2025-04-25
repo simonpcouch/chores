@@ -26,7 +26,9 @@
   # suppress "Listening on..." message and rethrow errors with new context
   try_fetch(
     suppressMessages(helper_fn_name <- .chores_app()),
-    error = function(cnd) {cli::cli_abort(conditionMessage(cnd), call = NULL)}
+    error = function(cnd) {
+      cli::cli_abort(conditionMessage(cnd), call = NULL)
+    }
   )
 
   if (is.null(helper_fn_name) || identical(helper_fn_name, ".helper_rs_")) {
@@ -51,15 +53,18 @@
 
   ui <- miniUI::miniPage(
     miniUI::miniContentPanel(
-      shiny::selectizeInput("helper", "Select a helper:",
-                            choices = helper_choices,
-                            multiple = FALSE,
-                            options = list(
-                              create = FALSE,
-                              placeholder = 'Type to filter or select a helper',
-                              onDropdownOpen = I("function($dropdown) {this.clear();}"),
-                              onBlur = I("function() {this.clear();}"),
-                              score = I("function(search) {
+      shiny::selectizeInput(
+        "helper",
+        "Select a helper:",
+        choices = helper_choices,
+        multiple = FALSE,
+        options = list(
+          create = FALSE,
+          placeholder = 'Type to filter or select a helper',
+          onDropdownOpen = I("function($dropdown) {this.clear();}"),
+          onBlur = I("function() {this.clear();}"),
+          score = I(
+            "function(search) {
                                            return function(item) {
                                              const text = (item.value || item.text || '').toLowerCase();
                                              const searchLower = search.toLowerCase();
@@ -67,11 +72,13 @@
                                              if (text.includes(searchLower)) return 0.5;
                                              return 0;
                                            };
-                                         }")
-                            )
+                                         }"
+          )
+        )
       ),
       shiny::verbatimTextOutput("result"),
-      shiny::tags$script(shiny::HTML("
+      shiny::tags$script(shiny::HTML(
+        "
         $(document).on('keyup', function(e) {
           if(e.key == 'Enter'){
             Shiny.setInputValue('done', true, {priority: 'event'});
@@ -89,7 +96,8 @@
             });
           }, 100);
         });
-      ")),
+      "
+      )),
       shiny::tags$div(
         style = "position: absolute; bottom: 10px; left: 0; right: 0; color: #999;",
         "Press [Enter] to submit."

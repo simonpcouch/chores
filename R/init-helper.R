@@ -36,9 +36,9 @@
 #' }
 #' @export
 .init_helper <- function(
-    chore = NULL,
-    .chores_chat = getOption(".chores_chat")
-  ) {
+  chore = NULL,
+  .chores_chat = getOption(".chores_chat")
+) {
   check_chore(chore, allow_default = TRUE)
   if (!chore %in% list_helpers()) {
     cli::cli_abort(c(

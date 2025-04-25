@@ -12,8 +12,13 @@ test_that("directory_load works", {
 
   withr::defer(
     try_fetch(
-      {.helper_remove("boop"); .helper_remove("wop")},
-      error = function(e) {invisible()}
+      {
+        .helper_remove("boop")
+        .helper_remove("wop")
+      },
+      error = function(e) {
+        invisible()
+      }
     )
   )
 
@@ -63,8 +68,14 @@ test_that("directory_set works", {
   )
 
   path_new <- file.path(path, "test")
-  if (file.exists(path_new)) {file.remove(path_new)}
-  withr::defer({if (file.exists(path_new)) {file.remove(path_new)}})
+  if (file.exists(path_new)) {
+    file.remove(path_new)
+  }
+  withr::defer({
+    if (file.exists(path_new)) {
+      file.remove(path_new)
+    }
+  })
   dir.create(path_new)
   .res <- directory_set(path_new)
   expect_equal(directory_path(), .res)
@@ -81,7 +92,14 @@ test_that("directory_load() doesn't warn with no trailing newline (#75)", {
   )
 
   withr::defer(
-    try_fetch({.helper_remove("test")}, error = function(e) {invisible()})
+    try_fetch(
+      {
+        .helper_remove("test")
+      },
+      error = function(e) {
+        invisible()
+      }
+    )
   )
 
   expect_no_warning(directory_load(tmp_dir))
@@ -91,9 +109,10 @@ test_that("directory_load() doesn't warn with no trailing newline (#75)", {
 test_that("directory_list returns empty and messages informatively when no files", {
   tmp_dir <- withr::local_tempdir()
   withr::local_options(.chores_dir = tmp_dir)
-  testthat::local_mocked_bindings(interactive = function(...) {TRUE})
+  testthat::local_mocked_bindings(interactive = function(...) {
+    TRUE
+  })
 
   expect_snapshot(res <- directory_list())
   expect_equal(res, character(0))
 })
-

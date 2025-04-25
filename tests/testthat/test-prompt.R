@@ -2,11 +2,19 @@ test_that("prompt_* functions work", {
   # contains two prompts, `boop-replace` and `wop-prefix`
   tmp_dir <- withr::local_tempdir()
   withr::local_options(.chores_dir = tmp_dir)
-  testthat::local_mocked_bindings(interactive = function(...) {FALSE})
+  testthat::local_mocked_bindings(interactive = function(...) {
+    FALSE
+  })
 
   path <- file.path(tmp_dir, "floop-replace.md")
-  if (file.exists(path)) {file.remove(path)}
-  withr::defer({if (file.exists(path)) {file.remove(path)}})
+  if (file.exists(path)) {
+    file.remove(path)
+  }
+  withr::defer({
+    if (file.exists(path)) {
+      file.remove(path)
+    }
+  })
 
   if ("floop" %in% list_helpers()) {
     .helper_remove("floop")
@@ -29,7 +37,9 @@ test_that("prompt_remove errors informatively with bad chore", {
   # contains two prompts, `boop-replace` and `wop-prefix`
   tmp_dir <- withr::local_tempdir()
   withr::local_options(.chores_dir = tmp_dir)
-  testthat::local_mocked_bindings(interactive = function(...) {FALSE})
+  testthat::local_mocked_bindings(interactive = function(...) {
+    FALSE
+  })
 
   expect_snapshot(error = TRUE, prompt_remove("nonexistentchore"))
 })
@@ -39,7 +49,9 @@ test_that("new prompts can be pre-filled with contents", {
   # contains two prompts, `boop-replace` and `wop-prefix`
   tmp_dir <- withr::local_tempdir()
   withr::local_options(.chores_dir = tmp_dir)
-  testthat::local_mocked_bindings(interactive = function(...) {FALSE})
+  testthat::local_mocked_bindings(interactive = function(...) {
+    FALSE
+  })
   withr::defer(prompt_remove("summarizeAlt"))
 
   # expect that no "incomplete final line" warnings are raised
@@ -63,7 +75,9 @@ test_that("new prompts are pre-filled with a template by default (#57)", {
   # contains two prompts, `boop-replace` and `wop-prefix`
   tmp_dir <- withr::local_tempdir()
   withr::local_options(.chores_dir = tmp_dir)
-  testthat::local_mocked_bindings(interactive = function(...) {FALSE})
+  testthat::local_mocked_bindings(interactive = function(...) {
+    FALSE
+  })
   withr::defer(prompt_remove("template"))
 
   path <- prompt_new("template", "prefix")
@@ -78,7 +92,9 @@ test_that("new prompts error informatively with bad pre-fill contents", {
   # contains two prompts, `boop-replace` and `wop-prefix`
   tmp_dir <- withr::local_tempdir()
   withr::local_options(.chores_dir = tmp_dir)
-  testthat::local_mocked_bindings(interactive = function(...) {FALSE})
+  testthat::local_mocked_bindings(interactive = function(...) {
+    FALSE
+  })
   withr::defer(prompt_remove("summarizeAlt"))
 
   expect_snapshot(
@@ -97,7 +113,9 @@ test_that("prompts can be added, removed, and added again without restart (#58)"
   # contains two prompts, `boop-replace` and `wop-prefix`
   tmp_dir <- withr::local_tempdir()
   withr::local_options(.chores_dir = tmp_dir)
-  testthat::local_mocked_bindings(interactive = function(...) {FALSE})
+  testthat::local_mocked_bindings(interactive = function(...) {
+    FALSE
+  })
   withr::defer(prompt_remove("template"))
 
   path <- prompt_new("template", "prefix")

@@ -69,9 +69,11 @@ get_primary_selection <- function(context) {
 }
 
 # ad-hoc check helpers -------
-check_chore <- function(chore,
-                       allow_default = !is.null(getOption(".helper_on_load")),
-                       call = caller_env()) {
+check_chore <- function(
+  chore,
+  allow_default = !is.null(getOption(".helper_on_load")),
+  call = caller_env()
+) {
   check_string(chore, allow_empty = FALSE, call = call)
 
   if (!is_valid_chore(chore)) {

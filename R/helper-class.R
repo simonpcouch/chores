@@ -6,7 +6,10 @@ Helper <- R6::R6Class(
 
       Chat <- .chores_chat$clone()
 
-      Chat$set_system_prompt(get(paste0(".helper_prompt_", chore), envir = chores_env()))
+      Chat$set_system_prompt(get(
+        paste0(".helper_prompt_", chore),
+        envir = chores_env()
+      ))
       private$Chat <- Chat
 
       .stash_last_helper(self)
@@ -20,7 +23,9 @@ Helper <- R6::R6Class(
     },
     chore = NULL,
     print = function(...) {
-      model <- private$Chat[[".__enclos_env__"]][["private"]][["provider"]]@model
+      model <- private$Chat[[".__enclos_env__"]][["private"]][[
+        "provider"
+      ]]@model
       cli::cli_h3(
         "A {.field {self$chore}} chore helper using {.field {model}}."
       )

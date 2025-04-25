@@ -128,7 +128,9 @@ directory_list <- function() {
     cli::cli_bullets(
       set_names(
         paste0(
-          "{.file ", prompt_paths, "}"
+          "{.file ",
+          prompt_paths,
+          "}"
         ),
         "*"
       )
