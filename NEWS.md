@@ -5,6 +5,10 @@
   helper to select it _and then_ submit the selected choice by pressing 
   Return/Enter (#87). This change aligns behavior in the UI when selecting 
   helpers with a mouse click versus the up/down arrows.
+
+* Users no longer need to call `directory_load()` manually after adding new
+  custom helpers; the helper selection app will refresh the list of available
+  helpers on app launch (#88).
   
 # chores 0.1.0
 

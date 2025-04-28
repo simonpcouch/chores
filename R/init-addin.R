@@ -23,6 +23,8 @@
     return(invisible())
   }
 
+  load_chores_directory()
+
   # suppress "Listening on..." message and rethrow errors with new context
   try_fetch(
     suppressMessages(helper_fn_name <- .chores_app()),

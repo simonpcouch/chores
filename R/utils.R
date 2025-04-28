@@ -31,6 +31,16 @@ list_helpers <- function() {
   gsub(".helper_prompt_", "", prompt_names)
 }
 
+load_chores_directory <- function() {
+  chores_dir <- getOption(
+    ".chores_dir",
+    default = file.path("~", ".config", "chores")
+  )
+  if (!is.null(chores_dir) && dir.exists(chores_dir)) {
+    directory_load(chores_dir)
+  }
+}
+
 retrieve_helper <- function(chore) {
   if (exists(paste0(".helper_last_", chore))) {
     helper <- get(paste0(".helper_last_", chore))

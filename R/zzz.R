@@ -6,13 +6,7 @@
 
   directory_load(system.file("prompts", package = "chores"))
 
-  chores_dir <- getOption(
-    ".chores_dir",
-    default = file.path("~", ".config", "chores")
-  )
-  if (!is.null(chores_dir) && dir.exists(chores_dir)) {
-    directory_load(chores_dir)
-  }
+  load_chores_directory()
 }
 
 # nocov end
