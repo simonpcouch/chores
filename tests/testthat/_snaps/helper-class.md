@@ -1,11 +1,3 @@
-# chat errors informatively with no input
-
-    Code
-      cli_helper$chat()
-    Condition
-      Error in `user_turn()`:
-      ! Must supply at least one input.
-
 # fetch_chores_chat returns early with no option set
 
     Code
