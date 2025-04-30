@@ -1,3 +1,5 @@
+# chores (development version)
+
 # chores 0.2.0
 
 * In the helper selection app, clicking a helper in the selectize will now 
