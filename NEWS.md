@@ -1,4 +1,4 @@
-# chores (development version)
+# chores 0.2.0
 
 * In the helper selection app, clicking a helper in the selectize will now 
   submit the selected choice. Previously, the user would have to click the 

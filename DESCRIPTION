@@ -1,10 +1,10 @@
 Package: chores
 Title: A Collection of Large Language Model Assistants
-Version: 0.1.0.9000
+Version: 0.2.0
 Authors@R: c(
     person("Simon", "Couch", , "simon.couch@posit.co", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-5676-5107")),
-    person("Posit Software, PBC", role = c("cph", "fnd"))
+    person("Posit Software, PBC", role = c("cph", "fnd"), comment = c(ROR = "03wc8by49"))
   )
 Description: Provides a collection of ergonomic large language model assistants 
     designed to help you complete repetitive, hard-to-automate tasks quickly. 
