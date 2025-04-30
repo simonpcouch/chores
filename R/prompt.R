@@ -15,8 +15,8 @@
 #' * `prompt_edit()` and `prompt_remove()` open and delete, respectively, the
 #' file that defines the given chore's system prompt.
 #'
-#' Load the prompts you create with these functions using [directory_load()]
-#' (which is automatically called when the package loads).
+#' The prompts you create with these functions will be automatically loaded
+#' when you next trigger the helper addin.
 #'
 #' @param chore A single string giving a descriptor of the helper's functionality.
 #' Cand only contain letters and numbers.
@@ -41,9 +41,6 @@
 #' if (interactive()) {
 #' # create a new helper for chore `"boop"` that replaces the selected text:
 #' prompt_new("boop")
-#'
-#' # after writing a prompt, register it with the chores package with:
-#' directory_load()
 #'
 #' # after closing the file, reopen with:
 #' prompt_edit("boop")

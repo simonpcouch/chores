@@ -11,8 +11,6 @@
 #'   the option `.chores_dir`).
 #' * `directory_list()` enumerates all of the different prompts that currently
 #'   live in the directory (and provides clickable links to each).
-#' * `directory_load()` registers each of the prompts in the prompt
-#'   directory with the chores package.
 #'
 #' [Functions prefixed with][prompt] `prompt*()` allow users to conveniently create, edit,
 #' and delete the prompts in chores' prompt directory.
@@ -81,10 +79,6 @@
 #'
 #' # view updated list of prompts
 #' directory_list()
-#'
-#' # register the prompt with the package
-#' # (this will also happen automatically on reload)
-#' directory_load()
 #'
 #' @export
 directory_load <- function(dir = directory_path()) {

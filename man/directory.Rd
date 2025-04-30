@@ -40,8 +40,6 @@ making new "chores" available:
 the option \code{.chores_dir}).
 \item \code{directory_list()} enumerates all of the different prompts that currently
 live in the directory (and provides clickable links to each).
-\item \code{directory_load()} registers each of the prompts in the prompt
-directory with the chores package.
 }
 
 \link[=prompt]{Functions prefixed with} \verb{prompt*()} allow users to conveniently create, edit,
@@ -97,10 +95,6 @@ prompt_new("boop", "replace")
 
 # view updated list of prompts
 directory_list()
-
-# register the prompt with the package
-# (this will also happen automatically on reload)
-directory_load()
 
 }
 \seealso{
