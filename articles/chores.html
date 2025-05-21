@@ -105,8 +105,8 @@ important to consider data privacy when using LLMs with chores.</p>
 <p>chores uses the <code>.chores_chat</code> option to configure which
 model powers the addin. <code>.chores_chat</code> should be set to an
 ellmer Chat object. For example, to use Anthropic’s Claude, you might
-write <code>options(.chores_chat = ellmer::chat_claude())</code>. Paste
-that code in your <code>.Rprofile</code> via
+write <code>options(.chores_chat = ellmer::chat_anthropic())</code>.
+Paste that code in your <code>.Rprofile</code> via
 <code>usethis::edit_r_profile()</code> to always use the same model
 every time you start an R session.</p>
 <p>If you’re using ellmer inside a organization, you’ll be limited to
@@ -122,7 +122,7 @@ is a very powerful model for code assistance and is the model I’ve used
 while developing the package. If you want to use Claude, you’ll need to
 register an API key at <code>https://console.anthropic.com/</code> to
 the environment variable <code>ANTHROPIC_API_KEY</code> and then set
-<code>options(.chores_chat = ellmer::chat_claude())</code>.</p></li>
+<code>options(.chores_chat = ellmer::chat_anthropic())</code>.</p></li>
 <li><p>Regarding OpenAI’s models, <code>chat_openai()</code> defaults to
 <strong>GPT-4o</strong>, but you can use
 <code>model = "gpt-4o-mini"</code> for a cheaper, lower-quality model;
