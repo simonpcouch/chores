@@ -22,11 +22,11 @@ The chores package ships with a number of pre-engineered "chore helpers." A chor
 
 The chores addin supports any model supported by [ellmer](https://ellmer.tidyverse.org/). When choosing a model for use with chores, you'll want to the use the most performant model possible that satisfies your privacy needs; chores automatically passes along your selected code to your chosen model, so it's especially important to consider data privacy when using LLMs with chores.
 
-chores uses the `.chores_chat` option to configure which model powers the addin. `.chores_chat` should be set to an ellmer Chat object. For example, to use Anthropic's Claude, you might write `options(.chores_chat = ellmer::chat_claude())`. Paste that code in your `.Rprofile` via `usethis::edit_r_profile()` to always use the same model every time you start an R session.
+chores uses the `.chores_chat` option to configure which model powers the addin. `.chores_chat` should be set to an ellmer Chat object. For example, to use Anthropic's Claude, you might write `options(.chores_chat = ellmer::chat_anthropic())`. Paste that code in your `.Rprofile` via `usethis::edit_r_profile()` to always use the same model every time you start an R session.
 
 If you're using ellmer inside a organization, you'll be limited to what your IT department allows, which is likely to be one provided by a big cloud provider, e.g. `chat_azure()`, `chat_bedrock()`, `chat_databricks()`, or `chat_snowflake()`. If you're using ellmer for your own exploration, you'll have a lot more freedom, so we have a few recommendations to help you get started:
 
-- As of early 2025, Anthropic's **Claude Sonnet 3.5** is a very powerful model for code assistance and is the model I've used while developing the package. If you want to use Claude, you'll need to register an API key at `https://console.anthropic.com/` to the environment variable `ANTHROPIC_API_KEY` and then set `options(.chores_chat = ellmer::chat_claude())`. 
+- As of early 2025, Anthropic's **Claude Sonnet 3.5** is a very powerful model for code assistance and is the model I've used while developing the package. If you want to use Claude, you'll need to register an API key at `https://console.anthropic.com/` to the environment variable `ANTHROPIC_API_KEY` and then set `options(.chores_chat = ellmer::chat_anthropic())`. 
 
 * Regarding OpenAI's models, `chat_openai()` defaults to **GPT-4o**, but you can use `model = "gpt-4o-mini"` for a cheaper, lower-quality model; to use an OpenAI model, you'll need to set the options `options(.chores_chat = ellmer::chat_openai(model = "gpt-4o"))` and register your OpenAI API key with the `OPENAI_API_KEY` environment variable.
 

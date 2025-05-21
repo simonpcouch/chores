@@ -51,7 +51,7 @@ fetch_chores_chat <- function(.chores_chat = getOption(".chores_chat")) {
         "!" = "chores requires configuring an ellmer Chat with the
         {cli::col_blue('.chores_chat')} option.",
         "i" = "Set e.g.
-        {.code {cli::col_green('options(.chores_chat = ellmer::chat_claude())')}}
+        {.code {cli::col_green('options(.chores_chat = ellmer::chat_anthropic())')}}
         in your {.file ~/.Rprofile} and restart R.",
         "i" = "See \"Choosing a model\" in
         {.code vignette(\"chores\", package = \"chores\")} to learn more."

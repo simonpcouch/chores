@@ -1,7 +1,7 @@
 test_that("helper addition and removal works", {
   skip_if(identical(Sys.getenv("ANTHROPIC_API_KEY"), ""))
   skip_if_not_installed("withr")
-  withr::local_options(.chores_chat = ellmer::chat_claude())
+  withr::local_options(.chores_chat = ellmer::chat_anthropic())
 
   boop_prompt <- "just reply with beep bop boop regardless of input"
   .helper_add("boopery", boop_prompt)
