@@ -12,8 +12,8 @@ of \link[=cli_helper]{"cli"}, \link[=testthat_helper]{"testthat"} or \link[=roxy
 though custom helpers can be added with \code{\link[=prompt_new]{prompt_new()}}.}
 
 \item{.chores_chat}{An ellmer Chat, e.g.
-\code{function() ellmer::chat_claude()}. Defaults to the option by the same name,
-so e.g. set \code{options(.chores_chat = ellmer::chat_claude())} in your
+\code{function() ellmer::chat_anthropic()}. Defaults to the option by the same name,
+so e.g. set \code{options(.chores_chat = ellmer::chat_anthropic())} in your
 \code{.Rprofile} to configure chores with ellmer every time you start a new R session.}
 }
 \value{
@@ -31,7 +31,7 @@ with \code{\link[=prompt_new]{prompt_new()}}.
 # requires an API key and sets options
 \dontrun{
 # to create a chat with claude:
-.init_helper(.chores_chat = ellmer::chat_claude())
+.init_helper(.chores_chat = ellmer::chat_anthropic())
 
 # or with OpenAI's 4o-mini:
 .init_helper(.chores_chat = ellmer::chat_openai(model = "gpt-4o-mini"))
