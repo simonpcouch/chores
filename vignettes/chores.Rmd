@@ -16,7 +16,7 @@ library(chores)
 The chores package ships with a number of pre-engineered "chore helpers." A chore is a keyword that succinctly describes what the helper is intended to do and serves as an identifier to match the helper with its _prompt_ and _interface_. A helper's prompt is just a markdown file with enough context and examples to teach a model to carry out a given task well. A helper's interface determines whether it replaces, prefixes, or suffixes the selected code. For example:
 
 * The `"testthat"` helper helps you transition your R package's unit tests to the third edition of testthat. Its prompt shows the model how to convert to snapshot tests, disentangle nested expectations, and transition from deprecated functions. It replaces the selected code.
-* The `"roxygen"` helper helps you quickly template out royxgen documentation for a function. Its prompt shows the model how to write high-quality stub `@param` and `@returns` entries that can be later extended by the developer. It prefixes the selected code.
+* The `"roxygen"` helper helps you quickly template out roxygen documentation for a function. Its prompt shows the model how to write high-quality stub `@param` and `@returns` entries that can be later extended by the developer. It prefixes the selected code.
 
 ## Choosing a model
 
