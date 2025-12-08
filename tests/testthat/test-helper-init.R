@@ -1,7 +1,9 @@
 test_that("initializing a helper", {
   skip_if(identical(Sys.getenv("ANTHROPIC_API_KEY"), ""))
   skip_if_not_installed("withr")
-  withr::local_options(.chores_chat = ellmer::chat_claude())
+  withr::local_options(
+    .chores_chat = ellmer::chat_claude(model = "claude-3-7-sonnet-20250219")
+  )
 
   expect_snapshot(.init_helper("cli"))
   expect_snapshot(.init_helper("testthat"))
@@ -10,7 +12,9 @@ test_that("initializing a helper", {
 test_that("can use other models", {
   skip_if(identical(Sys.getenv("OPENAI_API_KEY"), ""))
   skip_if_not_installed("withr")
-  withr::local_options(.chores_chat = ellmer::chat_claude())
+  withr::local_options(
+    .chores_chat = ellmer::chat_claude(model = "claude-3-7-sonnet-20250219")
+  )
 
   # respects other argument values
   expect_snapshot(.init_helper(

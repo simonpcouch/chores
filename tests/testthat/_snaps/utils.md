@@ -4,7 +4,7 @@
       env_get(chores_env(), ".helper_last")
     Message
       
-      -- A cli chore helper using claude-3-5-sonnet-latest. 
+      -- A cli chore helper using claude-3-7-sonnet-20250219. 
 
 ---
 
@@ -12,7 +12,7 @@
       env_get(chores_env(), ".helper_last_cli")
     Message
       
-      -- A cli chore helper using claude-3-5-sonnet-latest. 
+      -- A cli chore helper using claude-3-7-sonnet-20250219. 
 
 ---
 

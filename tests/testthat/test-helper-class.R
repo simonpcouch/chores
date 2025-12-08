@@ -1,7 +1,9 @@
 test_that("can find the previous helper", {
   skip_if(identical(Sys.getenv("ANTHROPIC_API_KEY"), ""))
   skip_if_not_installed("withr")
-  withr::local_options(.chores_chat = ellmer::chat_claude())
+  withr::local_options(
+    .chores_chat = ellmer::chat_claude(model = "claude-3-7-sonnet-20250219")
+  )
 
   cli_helper <- .init_helper("cli")
   expect_no_error(response <- cli_helper$chat("stop(\"Error message here\")"))
@@ -10,7 +12,9 @@ test_that("can find the previous helper", {
 test_that("chores_chat effectively integrates system prompt", {
   skip_if(identical(Sys.getenv("ANTHROPIC_API_KEY"), ""))
   skip_if_not_installed("withr")
-  withr::local_options(.chores_chat = ellmer::chat_claude())
+  withr::local_options(
+    .chores_chat = ellmer::chat_claude(model = "claude-3-7-sonnet-20250219")
+  )
 
   cli_helper <- .init_helper("cli")
   response <- cli_helper$chat("stop(\"Error message here\")")
@@ -39,4 +43,24 @@ test_that("fetch_chores_chat returns early with bad config", {
 
   mock_chat <- structure(list(), class = "Chat")
   expect_identical(fetch_chores_chat(mock_chat), mock_chat)
+})
+
+test_that("get_chores_chat prefers chores.chat over .chores_chat", {
+  mock_chat_new <- structure(list(name = "new"), class = "Chat")
+  mock_chat_old <- structure(list(name = "old"), class = "Chat")
+
+  withr::local_options(chores.chat = NULL, .chores_chat = NULL)
+  expect_null(get_chores_chat())
+
+  withr::local_options(chores.chat = NULL, .chores_chat = mock_chat_old)
+  expect_identical(get_chores_chat(), mock_chat_old)
+
+  withr::local_options(chores.chat = mock_chat_new, .chores_chat = NULL)
+  expect_identical(get_chores_chat(), mock_chat_new)
+
+  withr::local_options(
+    chores.chat = mock_chat_new,
+    .chores_chat = mock_chat_old
+  )
+  expect_identical(get_chores_chat(), mock_chat_new)
 })

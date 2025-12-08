@@ -4,7 +4,7 @@
       .init_helper("cli")
     Message
       
-      -- A cli chore helper using claude-3-5-sonnet-latest. 
+      -- A cli chore helper using claude-3-7-sonnet-20250219. 
 
 ---
 
@@ -12,7 +12,7 @@
       .init_helper("testthat")
     Message
       
-      -- A testthat chore helper using claude-3-5-sonnet-latest. 
+      -- A testthat chore helper using claude-3-7-sonnet-20250219. 
 
 # can use other models
 
