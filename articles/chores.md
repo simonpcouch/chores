@@ -61,15 +61,31 @@ recommendations to help you get started:
   register your OpenAI API key with the `OPENAI_API_KEY` environment
   variable.
 
-- You can use a **local model** with `chat_ollama()`, which uses
-  [Ollama](https://ollama.com) and allows you to run models on your own
-  computer. While the biggest models you can run locally aren’t as good
-  as the state of the art hosted models, they don’t share your data and
-  are effectively free. To use an ollama model, run the model locally
-  and then set
-  `options(chores.chat = ellmer::chat_ollama(model = "model-name"))`.
-  Instead of `model-name`, you’d substitute in the name of the model
-  that appears when you run `ollama list` at the console.
+- You can use a **local model**, which allows you to run models on your
+  own computer. Local models don’t share your data and are free to use,
+  though they’re slightly less accurate than the state of the art hosted
+  models. We recommend **Qwen3 4B Instruct 2507** for local use with
+  chores; at least with MLX on Mac, it takes up 2.5GB of space and
+  requires 2.5GB of RAM to run.
+
+  **On Apple Silicon (Mac M-series)**, we recommend [LM
+  Studio](https://lmstudio.ai/). Click “Discover”, search “Qwen3 4B
+  Instruct 2507”, and click “Download.” Once downloaded, click the
+  “Developer” tab and change the Status from Stopped to Running. Then
+  configure chores with:
+
+``` r
+qwen3_4b <- ellmer::chat_openai_compatible(
+  base_url = "http://127.0.0.1:1234/v1",
+  model = "qwen/qwen3-4b-2507"
+)
+
+options(chores.chat = qwen3_4b)
+```
+
+**On other systems**, use [Ollama](https://ollama.com). Run
+`ollama pull qwen3:4b` at the terminal, then set
+`options(chores.chat = ellmer::chat_ollama(model = "qwen3:4b"))`.
 
 ## The chores addin
 
