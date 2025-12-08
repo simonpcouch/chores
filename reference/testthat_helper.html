@@ -83,14 +83,14 @@ Add in (a generous) 100 tokens for the code that's actually highlighted
 and also sent off to the model and you're looking at 1,100 input tokens.
 The model returns approximately the same number of output tokens as it
 receives, so we'll call that 100 output tokens per refactor.</p>
-<p>As of the time of writing (late 2025), the recommended chores model Claude
-Haiku 4.5 costs $1 per million input tokens and $5 per million output
+<p>As of the time of writing (October 2024), the recommended chores model Claude
+Sonnet 3.5 costs $3 per million input tokens and $15 per million output
 tokens. So, using the recommended model,
-<strong>testthat helpers cost around $2 for every 1,000 refactored pieces of code</strong>. GPT-4.1-mini,
-by contrast, doesn't tend to get many pieces of formatting right and
+<strong>testthat helpers cost around $4 for every 1,000 refactored pieces of code</strong>. GPT-4o
+Mini, by contrast, doesn't tend to get many pieces of formatting right and
 often fails to line-break properly, but <em>does</em> usually return syntactically
 valid calls to testthat functions, and it would cost around
-65 cents per 1,000 refactored pieces of code.</p>
+20 cents per 1,000 refactored pieces of code.</p>
     </div>
     <div class="section level2">
     <h2 id="gallery">Gallery<a class="anchor" aria-label="anchor" href="#gallery"></a></h2>
@@ -100,7 +100,7 @@ valid calls to testthat functions, and it would cost around
 <p>This section includes a handful of examples
 "<a href="https://github.com/tidymodels/broom/tree/7fa26488ab522bf577092e99aad1f2003f21b327/tests" class="external-link">from</a>
 the <a href="https://github.com/tidymodels/tune/tree/f8d734ac0fa981fae3a87ed2871a46e9c40d509d/tests" class="external-link">wild</a>"
-and are generated with the recommended model, Claude Haiku 4.5.</p>
+and are generated with the recommended model, Claude Sonnet 3.5.</p>
 <p>Testthat helpers convert <code>expect_error()</code> (and <code>*_warning()</code> and <code>*_message()</code>
 and <code>*_condition()</code>) calls to use <code>expect_snapshot()</code> when there's a
 regular expression present:</p>

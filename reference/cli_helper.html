@@ -86,13 +86,13 @@ Add in (a generous) 100 tokens for the code that's actually highlighted
 and also sent off to the model and you're looking at 4,100 input tokens.
 The model returns approximately the same number of output tokens as it
 receives, so we'll call that 100 output tokens per refactor.</p>
-<p>As of the time of writing (late 2025), the recommended chores model Claude
-Haiku 4.5 costs $1 per million input tokens and $5 per million output
+<p>As of the time of writing (October 2024), the recommended chores model Claude
+Sonnet 3.5 costs $3 per million input tokens and $15 per million output
 tokens. So, using the recommended model,
-<strong>cli helpers cost around $5 for every 1,000 refactored pieces of code</strong>. GPT-4.1-mini,
-by contrast, doesn't tend to get cli markup classes right but <em>does</em>
+<strong>cli helpers cost around $15 for every 1,000 refactored pieces of code</strong>. GPT-4o
+Mini, by contrast, doesn't tend to get cli markup classes right but <em>does</em>
 return syntactically valid calls to cli functions, and it would cost around
-$2 per 1,000 refactored pieces of code.</p>
+75 cents per 1,000 refactored pieces of code.</p>
     </div>
     <div class="section level2">
     <h2 id="gallery">Gallery<a class="anchor" aria-label="anchor" href="#gallery"></a></h2>
@@ -101,7 +101,7 @@ $2 per 1,000 refactored pieces of code.</p>
 
 <p>This section includes a handful of examples
 <a href="https://github.com/tidymodels/tune/blob/f8d734ac0fa981fae3a87ed2871a46e9c40d509d/R/checks.R" class="external-link">"from the wild"</a>
-and are generated with the recommended model, Claude Haiku 4.5.</p>
+and are generated with the recommended model, Claude Sonnet 3.5.</p>
 <p>At its simplest, a one-line message with a little bit of markup:</p>
 <p></p><div class="sourceCode r"><pre><code><span><span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/abort.html" class="external-link">abort</a></span><span class="op">(</span><span class="st">"`save_pred` can only be used if the initial results saved predictions."</span><span class="op">)</span></span></code></pre><p></p></div>
 <p>Returns:</p>

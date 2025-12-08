@@ -88,14 +88,14 @@ so e.g. set <code>options(.chores_chat = ellmer::chat_claude())</code> in your
 <span class="r-in"><span><span class="co"># to create a chat with claude:</span></span></span>
 <span class="r-in"><span><span class="fu">.init_helper</span><span class="op">(</span>.chores_chat <span class="op">=</span> <span class="fu">ellmer</span><span class="fu">::</span><span class="fu"><a href="https://ellmer.tidyverse.org/reference/chat_anthropic.html" class="external-link">chat_claude</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># or with OpenAI's GPT-4.1-mini:</span></span></span>
-<span class="r-in"><span><span class="fu">.init_helper</span><span class="op">(</span>.chores_chat <span class="op">=</span> <span class="fu">ellmer</span><span class="fu">::</span><span class="fu"><a href="https://ellmer.tidyverse.org/reference/chat_openai.html" class="external-link">chat_openai</a></span><span class="op">(</span>model <span class="op">=</span> <span class="st">"gpt-4.1-mini"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># or with OpenAI's 4o-mini:</span></span></span>
+<span class="r-in"><span><span class="fu">.init_helper</span><span class="op">(</span>.chores_chat <span class="op">=</span> <span class="fu">ellmer</span><span class="fu">::</span><span class="fu"><a href="https://ellmer.tidyverse.org/reference/chat_openai.html" class="external-link">chat_openai</a></span><span class="op">(</span>model <span class="op">=</span> <span class="st">"gpt-4o-mini"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># to set OpenAI's GPT-4.1-mini as the default model powering chores, for example,</span></span></span>
+<span class="r-in"><span><span class="co"># to set OpenAI's 4o-mini as the default model powering chores, for example,</span></span></span>
 <span class="r-in"><span><span class="co"># set the following option (possibly in your .Rprofile, if you'd like</span></span></span>
 <span class="r-in"><span><span class="co"># them to persist across sessions):</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>  .chores_chat <span class="op">=</span> <span class="fu">ellmer</span><span class="fu">::</span><span class="fu"><a href="https://ellmer.tidyverse.org/reference/chat_openai.html" class="external-link">chat_openai</a></span><span class="op">(</span>model <span class="op">=</span> <span class="st">"gpt-4.1-mini"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  .chores_chat <span class="op">=</span> <span class="fu">ellmer</span><span class="fu">::</span><span class="fu"><a href="https://ellmer.tidyverse.org/reference/chat_openai.html" class="external-link">chat_openai</a></span><span class="op">(</span>model <span class="op">=</span> <span class="st">"gpt-4o-mini"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
 </code></pre></div>
