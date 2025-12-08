@@ -8,7 +8,7 @@ directory, making new "chores" available:
 - `directory_path()` returns the path to the prompt directory.
 
 - `directory_set()` changes the path to the prompt directory (by setting
-  the option `.chores_dir`).
+  the option `chores.dir`).
 
 - `directory_list()` enumerates all of the different prompts that
   currently live in the directory (and provides clickable links to
@@ -78,8 +78,8 @@ the markdown file's instructions). Note:
 
 To load custom prompts every time the package is loaded, place your
 prompts in `directory_path()`. To change the prompt directory without
-loading the package, just set the `.chores_dir` option with
-`options(.chores_dir = some_dir)`. To load a directory of files that's
+loading the package, just set the `chores.dir` option with
+`options(chores.dir = some_dir)`. To load a directory of files that's
 not the prompt directory, provide a `dir` argument to
 `directory_load()`.
 
@@ -97,7 +97,7 @@ using prompts from others.
 tmp_dir <- withr::local_tempdir()
 directory_set(tmp_dir)
 #> Error in directory_set(tmp_dir): `dir` doesn't exist.
-#> ℹ If desired, create it with `dir.create("/tmp/RtmpQVQIjl/file190529125f0b",
+#> ℹ If desired, create it with `dir.create("/tmp/RtmpgCNiR5/file192465a5f6ec",
 #>   recursive = TRUE)`.
 
 # print out the current prompt directory

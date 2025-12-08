@@ -102,10 +102,10 @@ for use with chores, you’ll want to the use the most performant model
 possible that satisfies your privacy needs; chores automatically passes
 along your selected code to your chosen model, so it’s especially
 important to consider data privacy when using LLMs with chores.</p>
-<p>chores uses the <code>.chores_chat</code> option to configure which
-model powers the addin. <code>.chores_chat</code> should be set to an
+<p>chores uses the <code>chores.chat</code> option to configure which
+model powers the addin. <code>chores.chat</code> should be set to an
 ellmer Chat object. For example, to use Anthropic’s Claude, you might
-write <code>options(.chores_chat = ellmer::chat_claude())</code>. Paste
+write <code>options(chores.chat = ellmer::chat_claude())</code>. Paste
 that code in your <code>.Rprofile</code> via
 <code>usethis::edit_r_profile()</code> to always use the same model
 every time you start an R session.</p>
@@ -122,12 +122,12 @@ is a very powerful model for code assistance and is the model I’ve used
 while developing the package. If you want to use Claude, you’ll need to
 register an API key at <code>https://console.anthropic.com/</code> to
 the environment variable <code>ANTHROPIC_API_KEY</code> and then set
-<code>options(.chores_chat = ellmer::chat_claude())</code>.</p></li>
+<code>options(chores.chat = ellmer::chat_claude())</code>.</p></li>
 <li><p>Regarding OpenAI’s models, <code>chat_openai()</code> defaults to
 <strong>GPT-4o</strong>, but you can use
 <code>model = "gpt-4o-mini"</code> for a cheaper, lower-quality model;
 to use an OpenAI model, you’ll need to set the options
-<code>options(.chores_chat = ellmer::chat_openai(model = "gpt-4o"))</code>
+<code>options(chores.chat = ellmer::chat_openai(model = "gpt-4o"))</code>
 and register your OpenAI API key with the <code>OPENAI_API_KEY</code>
 environment variable.</p></li>
 <li><p>You can use a <strong>local model</strong> with
@@ -136,7 +136,7 @@ your own computer. While the biggest models you can run locally aren’t
 as good as the state of the art hosted models, they don’t share your
 data and are effectively free. To use an ollama model, run the model
 locally and then set
-<code>options(.chores_chat = ellmer::chat_ollama(model = "model-name"))</code>.
+<code>options(chores.chat = ellmer::chat_ollama(model = "model-name"))</code>.
 Instead of <code>model-name</code>, you’d substitute in the name of the
 model that appears when you run <code>ollama list</code> at the
 console.</p></li>

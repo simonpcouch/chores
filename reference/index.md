@@ -18,8 +18,10 @@ vignette to learn how to work with helpers.
   [`directory_set()`](https://simonpcouch.github.io/chores/reference/directory.md)
   : The prompt directory
 - [`helper_options`](https://simonpcouch.github.io/chores/reference/helper_options.md)
-  [`.chores_dir`](https://simonpcouch.github.io/chores/reference/helper_options.md)
+  [`chores.chat`](https://simonpcouch.github.io/chores/reference/helper_options.md)
   [`.chores_chat`](https://simonpcouch.github.io/chores/reference/helper_options.md)
+  [`chores.dir`](https://simonpcouch.github.io/chores/reference/helper_options.md)
+  [`.chores_dir`](https://simonpcouch.github.io/chores/reference/helper_options.md)
   : Options used by the chores package
 
 ## Chore helpers for package development

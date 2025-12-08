@@ -125,8 +125,8 @@ you load R is to add a markdown file to the <em>prompt directory</em>.
 The prompt directory is a folder of markdown files that serves as a
 library of possible helpers. By default, the prompt directory lives at
 <code>~/.config/chores</code>, but that default can be changed by adding
-a <code>.chores_dir</code> option in your <code>.Rprofile</code> using
-<code>options(.chores_dir = some/dir/</code>).
+a <code>chores.dir</code> option in your <code>.Rprofile</code> using
+<code>options(chores.dir = "some/dir/")</code>.
 <code><a href="../reference/directory.html">directory_path()</a></code> returns the path to the directory,
 <code><a href="../reference/directory.html">directory_set()</a></code> changes it, <code><a href="../reference/directory.html">directory_list()</a></code>
 enumerates all of the prompts that currently live in it, and

@@ -33,10 +33,10 @@ that satisfies your privacy needs; chores automatically passes along
 your selected code to your chosen model, so it’s especially important to
 consider data privacy when using LLMs with chores.
 
-chores uses the `.chores_chat` option to configure which model powers
-the addin. `.chores_chat` should be set to an ellmer Chat object. For
+chores uses the `chores.chat` option to configure which model powers the
+addin. `chores.chat` should be set to an ellmer Chat object. For
 example, to use Anthropic’s Claude, you might write
-`options(.chores_chat = ellmer::chat_claude())`. Paste that code in your
+`options(chores.chat = ellmer::chat_claude())`. Paste that code in your
 `.Rprofile` via `usethis::edit_r_profile()` to always use the same model
 every time you start an R session.
 
@@ -52,12 +52,12 @@ recommendations to help you get started:
   the package. If you want to use Claude, you’ll need to register an API
   key at `https://console.anthropic.com/` to the environment variable
   `ANTHROPIC_API_KEY` and then set
-  `options(.chores_chat = ellmer::chat_claude())`.
+  `options(chores.chat = ellmer::chat_claude())`.
 
 - Regarding OpenAI’s models, `chat_openai()` defaults to **GPT-4o**, but
   you can use `model = "gpt-4o-mini"` for a cheaper, lower-quality
   model; to use an OpenAI model, you’ll need to set the options
-  `options(.chores_chat = ellmer::chat_openai(model = "gpt-4o"))` and
+  `options(chores.chat = ellmer::chat_openai(model = "gpt-4o"))` and
   register your OpenAI API key with the `OPENAI_API_KEY` environment
   variable.
 
@@ -67,7 +67,7 @@ recommendations to help you get started:
   as the state of the art hosted models, they don’t share your data and
   are effectively free. To use an ollama model, run the model locally
   and then set
-  `options(.chores_chat = ellmer::chat_ollama(model = "model-name"))`.
+  `options(chores.chat = ellmer::chat_ollama(model = "model-name"))`.
   Instead of `model-name`, you’d substitute in the name of the model
   that appears when you run `ollama list` at the console.
 
