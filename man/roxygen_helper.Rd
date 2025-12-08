@@ -22,22 +22,22 @@ and also sent off to the model and you're looking at 1,200 input tokens.
 The model returns maybe 10 to 15 lines of relatively barebones royxgen
 documentation, so we'll call that 200 output tokens per refactor.
 
-As of the time of writing (October 2024), the recommended chores model Claude
-Sonnet 3.5 costs $3 per million input tokens and $15 per million output
+As of the time of writing (late 2025), the recommended chores model Claude
+Haiku 4.5 costs $1 per million input tokens and $5 per million output
 tokens. So, using the recommended model,
-\strong{roxygen helpers cost around $4 for every 1,000 generated roxygen documentation
-entries}. GPT-4o Mini, by contrast, doesn't tend to infer argument types
+\strong{roxygen helpers cost around $2 for every 1,000 generated roxygen documentation
+entries}. GPT-4.1-mini, by contrast, doesn't tend to infer argument types
 correctly as often and
 often fails to line-break properly, but \emph{does} usually return syntactically
 valid documentation entries, and it would cost around
-20 cents per 1,000 generated roxygen documentation entries.
+80 cents per 1,000 generated roxygen documentation entries.
 }
 
 \section{Gallery}{
 
 
 This section includes a handful of examples "from the wild"
-and are generated with the recommended model, Claude Sonnet 3.5.
+and are generated with the recommended model, Claude Haiku 4.5.
 
 Documenting a function factory:
 

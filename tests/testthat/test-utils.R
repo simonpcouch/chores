@@ -8,7 +8,7 @@ test_that(".helper_last is up to date with most recent helper", {
   expect_snapshot(env_get(chores_env(), ".helper_last"))
   expect_snapshot(env_get(chores_env(), ".helper_last_cli"))
 
-  .init_helper("cli", ellmer::chat_openai(model = "gpt-4o-mini"))
+  .init_helper("cli", ellmer::chat_openai(model = "gpt-4.1-mini"))
   expect_snapshot(env_get(chores_env(), ".helper_last"))
 })
 

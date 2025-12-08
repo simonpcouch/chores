@@ -28,13 +28,13 @@ and also sent off to the model and you're looking at 4,100 input tokens.
 The model returns approximately the same number of output tokens as it
 receives, so we'll call that 100 output tokens per refactor.
 
-As of the time of writing (October 2024), the recommended chores model Claude
-Sonnet 3.5 costs $3 per million input tokens and $15 per million output
+As of the time of writing (late 2025), the recommended chores model Claude
+Haiku 4.5 costs $1 per million input tokens and $5 per million output
 tokens. So, using the recommended model,
-\strong{cli helpers cost around $15 for every 1,000 refactored pieces of code}. GPT-4o
-Mini, by contrast, doesn't tend to get cli markup classes right but \emph{does}
+\strong{cli helpers cost around $5 for every 1,000 refactored pieces of code}. GPT-4.1-mini,
+by contrast, doesn't tend to get cli markup classes right but \emph{does}
 return syntactically valid calls to cli functions, and it would cost around
-75 cents per 1,000 refactored pieces of code.
+$2 per 1,000 refactored pieces of code.
 }
 
 \section{Gallery}{
@@ -42,7 +42,7 @@ return syntactically valid calls to cli functions, and it would cost around
 
 This section includes a handful of examples
 \href{https://github.com/tidymodels/tune/blob/f8d734ac0fa981fae3a87ed2871a46e9c40d509d/R/checks.R}{"from the wild"}
-and are generated with the recommended model, Claude Sonnet 3.5.
+and are generated with the recommended model, Claude Haiku 4.5.
 
 At its simplest, a one-line message with a little bit of markup:
 

@@ -15,7 +15,7 @@ test_that("can use other models", {
   # respects other argument values
   expect_snapshot(.init_helper(
     "cli",
-    .chores_chat = ellmer::chat_openai(model = "gpt-4o-mini")
+    .chores_chat = ellmer::chat_openai(model = "gpt-4.1-mini")
   ))
 })
 
