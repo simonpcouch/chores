@@ -117,17 +117,17 @@ big cloud provider, e.g. <code>chat_azure()</code>,
 exploration, you’ll have a lot more freedom, so we have a few
 recommendations to help you get started:</p>
 <ul>
-<li><p>As of early 2025, Anthropic’s <strong>Claude Sonnet 3.5</strong>
-is a very powerful model for code assistance and is the model I’ve used
-while developing the package. If you want to use Claude, you’ll need to
-register an API key at <code>https://console.anthropic.com/</code> to
-the environment variable <code>ANTHROPIC_API_KEY</code> and then set
-<code>options(.chores_chat = ellmer::chat_claude())</code>.</p></li>
+<li><p>As of early 2025, Anthropic’s <strong>Claude Haiku 4.5</strong>
+is a fast, cost-effective model for code assistance. If you want to use
+Claude, you’ll need to register an API key at
+<code>https://console.anthropic.com/</code> to the environment variable
+<code>ANTHROPIC_API_KEY</code> and then set
+<code>options(.chores_chat = ellmer::chat_claude(model = "claude-haiku-4-5-20251001"))</code>.</p></li>
 <li><p>Regarding OpenAI’s models, <code>chat_openai()</code> defaults to
-<strong>GPT-4o</strong>, but you can use
-<code>model = "gpt-4o-mini"</code> for a cheaper, lower-quality model;
-to use an OpenAI model, you’ll need to set the options
-<code>options(.chores_chat = ellmer::chat_openai(model = "gpt-4o"))</code>
+<strong>GPT-4.1</strong>, but you can use
+<code>model = "gpt-4.1-mini"</code> for a cheaper alternative; to use an
+OpenAI model, you’ll need to set the options
+<code>options(.chores_chat = ellmer::chat_openai(model = "gpt-4.1"))</code>
 and register your OpenAI API key with the <code>OPENAI_API_KEY</code>
 environment variable.</p></li>
 <li><p>You can use a <strong>local model</strong> with

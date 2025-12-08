@@ -47,17 +47,16 @@ cloud provider, e.g. `chat_azure()`, `chat_bedrock()`,
 your own exploration, you’ll have a lot more freedom, so we have a few
 recommendations to help you get started:
 
-- As of early 2025, Anthropic’s **Claude Sonnet 3.5** is a very powerful
-  model for code assistance and is the model I’ve used while developing
-  the package. If you want to use Claude, you’ll need to register an API
-  key at `https://console.anthropic.com/` to the environment variable
-  `ANTHROPIC_API_KEY` and then set
-  `options(.chores_chat = ellmer::chat_claude())`.
+- As of early 2025, Anthropic’s **Claude Haiku 4.5** is a fast,
+  cost-effective model for code assistance. If you want to use Claude,
+  you’ll need to register an API key at `https://console.anthropic.com/`
+  to the environment variable `ANTHROPIC_API_KEY` and then set
+  `options(.chores_chat = ellmer::chat_claude(model = "claude-haiku-4-5-20251001"))`.
 
-- Regarding OpenAI’s models, `chat_openai()` defaults to **GPT-4o**, but
-  you can use `model = "gpt-4o-mini"` for a cheaper, lower-quality
-  model; to use an OpenAI model, you’ll need to set the options
-  `options(.chores_chat = ellmer::chat_openai(model = "gpt-4o"))` and
+- Regarding OpenAI’s models, `chat_openai()` defaults to **GPT-4.1**,
+  but you can use `model = "gpt-4.1-mini"` for a cheaper alternative; to
+  use an OpenAI model, you’ll need to set the options
+  `options(.chores_chat = ellmer::chat_openai(model = "gpt-4.1"))` and
   register your OpenAI API key with the `OPENAI_API_KEY` environment
   variable.
 
