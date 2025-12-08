@@ -37,7 +37,7 @@ making new "chores" available:
 \itemize{
 \item \code{directory_path()} returns the path to the prompt directory.
 \item \code{directory_set()} changes the path to the prompt directory (by setting
-the option \code{.chores_dir}).
+the option \code{chores.dir}).
 \item \code{directory_list()} enumerates all of the different prompts that currently
 live in the directory (and provides clickable links to each).
 }
@@ -74,8 +74,8 @@ and the text following the hyphen must be one of \code{replace}, \code{prefix}, 
 
 To load custom prompts every time the package is loaded, place your
 prompts in \code{directory_path()}. To change the prompt directory without
-loading the package, just set the \code{.chores_dir} option with
-\code{options(.chores_dir = some_dir)}. To load a directory of files that's not
+loading the package, just set the \code{chores.dir} option with
+\code{options(chores.dir = some_dir)}. To load a directory of files that's not
 the prompt directory, provide a \code{dir} argument to \code{directory_load()}.
 }
 

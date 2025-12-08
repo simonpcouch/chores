@@ -2,16 +2,18 @@
 % Please edit documentation in R/options.R
 \name{helper_options}
 \alias{helper_options}
-\alias{.chores_dir}
+\alias{chores.chat}
 \alias{.chores_chat}
+\alias{chores.dir}
+\alias{.chores_dir}
 \title{Options used by the chores package}
 \description{
-The chores package makes use of three notable user-facing options:
+The chores package makes use of two notable user-facing options:
 \itemize{
-\item \code{.chores_dir} is the directory where helper prompts live. See the helper \link{directory}
-help-page for more information.
-\item \code{.chores_chat} determines the underlying LLM powering each helper.
+\item \code{chores.chat} determines the underlying LLM powering each helper.
 See the "Choosing a model" section of \code{vignette("chores", package = "chores")}
-for more information.
+for more information. The legacy option \code{.chores_chat} is also supported.
+\item \code{chores.dir} is the directory where helper prompts live. See the helper \link{directory}
+help-page for more information. The legacy option \code{.chores_dir} is also supported.
 }
 }

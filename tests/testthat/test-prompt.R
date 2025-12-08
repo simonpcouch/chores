@@ -1,7 +1,7 @@
 test_that("prompt_* functions work", {
   # contains two prompts, `boop-replace` and `wop-prefix`
   tmp_dir <- withr::local_tempdir()
-  withr::local_options(.chores_dir = tmp_dir)
+  withr::local_options(chores.dir = NULL, .chores_dir = tmp_dir)
   testthat::local_mocked_bindings(interactive = function(...) {
     FALSE
   })
@@ -36,7 +36,7 @@ test_that("prompt_* functions work", {
 test_that("prompt_remove errors informatively with bad chore", {
   # contains two prompts, `boop-replace` and `wop-prefix`
   tmp_dir <- withr::local_tempdir()
-  withr::local_options(.chores_dir = tmp_dir)
+  withr::local_options(chores.dir = NULL, .chores_dir = tmp_dir)
   testthat::local_mocked_bindings(interactive = function(...) {
     FALSE
   })
@@ -48,7 +48,7 @@ test_that("new prompts can be pre-filled with contents", {
   skip_if_offline()
   # contains two prompts, `boop-replace` and `wop-prefix`
   tmp_dir <- withr::local_tempdir()
-  withr::local_options(.chores_dir = tmp_dir)
+  withr::local_options(chores.dir = NULL, .chores_dir = tmp_dir)
   testthat::local_mocked_bindings(interactive = function(...) {
     FALSE
   })
@@ -74,7 +74,7 @@ test_that("new prompts are pre-filled with a template by default (#57)", {
   skip_if_offline()
   # contains two prompts, `boop-replace` and `wop-prefix`
   tmp_dir <- withr::local_tempdir()
-  withr::local_options(.chores_dir = tmp_dir)
+  withr::local_options(chores.dir = NULL, .chores_dir = tmp_dir)
   testthat::local_mocked_bindings(interactive = function(...) {
     FALSE
   })
@@ -91,7 +91,7 @@ test_that("new prompts error informatively with bad pre-fill contents", {
   skip_if_offline()
   # contains two prompts, `boop-replace` and `wop-prefix`
   tmp_dir <- withr::local_tempdir()
-  withr::local_options(.chores_dir = tmp_dir)
+  withr::local_options(chores.dir = NULL, .chores_dir = tmp_dir)
   testthat::local_mocked_bindings(interactive = function(...) {
     FALSE
   })
@@ -112,7 +112,7 @@ test_that("prompts can be added, removed, and added again without restart (#58)"
   skip_if_offline()
   # contains two prompts, `boop-replace` and `wop-prefix`
   tmp_dir <- withr::local_tempdir()
-  withr::local_options(.chores_dir = tmp_dir)
+  withr::local_options(chores.dir = NULL, .chores_dir = tmp_dir)
   testthat::local_mocked_bindings(interactive = function(...) {
     FALSE
   })

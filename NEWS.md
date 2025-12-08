@@ -1,5 +1,10 @@
 # chores (development version)
 
+* Introduced `chores.chat` and `chores.dir` as the preferred option names,
+  following standard R package option naming conventions. The legacy options
+  `.chores_chat` and `.chores_dir` continue to work and will not 
+  be deprecated (#99).
+
 # chores 0.2.0
 
 * In the helper selection app, clicking a helper in the selectize will now 

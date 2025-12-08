@@ -50,7 +50,7 @@ test_that("filter_interfaces messages informatively", {
 test_that("directory_list works", {
   # contains two prompts, `boop-replace` and `wop-prefix`
   tmp_dir <- withr::local_tempdir()
-  withr::local_options(.chores_dir = tmp_dir)
+  withr::local_options(chores.dir = NULL, .chores_dir = tmp_dir)
   expect_equal(directory_path(), tmp_dir)
 })
 
@@ -58,9 +58,9 @@ test_that("directory_set works", {
   expect_snapshot(error = TRUE, directory_set(identity))
 
   tmp_dir <- withr::local_tempdir()
-  withr::local_options(.chores_dir = tmp_dir)
+  withr::local_options(chores.dir = NULL, .chores_dir = tmp_dir)
   path <- directory_path()
-  withr::defer(directory_set(path))
+  withr::defer(options(chores.dir = NULL))
 
   expect_snapshot(
     error = TRUE,
@@ -108,11 +108,25 @@ test_that("directory_load() doesn't warn with no trailing newline (#75)", {
 
 test_that("directory_list returns empty and messages informatively when no files", {
   tmp_dir <- withr::local_tempdir()
-  withr::local_options(.chores_dir = tmp_dir)
+  withr::local_options(chores.dir = NULL, .chores_dir = tmp_dir)
   testthat::local_mocked_bindings(interactive = function(...) {
     TRUE
   })
 
   expect_snapshot(res <- directory_list())
   expect_equal(res, character(0))
+})
+
+test_that("get_chores_dir prefers chores.dir over .chores_dir", {
+  withr::local_options(chores.dir = NULL, .chores_dir = NULL)
+  expect_equal(get_chores_dir(), file.path("~", ".config", "chores"))
+
+  withr::local_options(chores.dir = NULL, .chores_dir = "/old/path")
+  expect_equal(get_chores_dir(), "/old/path")
+
+  withr::local_options(chores.dir = "/new/path", .chores_dir = NULL)
+  expect_equal(get_chores_dir(), "/new/path")
+
+  withr::local_options(chores.dir = "/new/path", .chores_dir = "/old/path")
+  expect_equal(get_chores_dir(), "/new/path")
 })

@@ -1,7 +1,11 @@
+get_chores_chat <- function() {
+  getOption("chores.chat", getOption(".chores_chat"))
+}
+
 Helper <- R6::R6Class(
   "Helper",
   public = list(
-    initialize = function(chore, .chores_chat = getOption(".chores_chat")) {
+    initialize = function(chore, .chores_chat = get_chores_chat()) {
       self$chore <- chore
 
       Chat <- .chores_chat$clone()
@@ -44,14 +48,15 @@ Helper <- R6::R6Class(
 
 # this function fails with messages and a NULL return value rather than errors
 # so that, when called from inside the addin, there's no dialog box raised by RStudio
-fetch_chores_chat <- function(.chores_chat = getOption(".chores_chat")) {
+fetch_chores_chat <- function(.chores_chat = get_chores_chat()) {
   if (is.null(.chores_chat)) {
     cli::cli_inform(
       c(
         "!" = "chores requires configuring an ellmer Chat with the
-        {cli::col_blue('.chores_chat')} option.",
+        {cli::col_blue('chores.chat')} option.",
         "i" = "Set e.g.
-        {.code {cli::col_green('options(.chores_chat = ellmer::chat_claude())')}}
+        {.code {cli::col_green('options(chores.chat = ellmer::chat_claude(model = 
+          \\\"claude-3-7-sonnet-20250219\\\"))')}}
         in your {.file ~/.Rprofile} and restart R.",
         "i" = "See \"Choosing a model\" in
         {.code vignette(\"chores\", package = \"chores\")} to learn more."
@@ -64,7 +69,7 @@ fetch_chores_chat <- function(.chores_chat = getOption(".chores_chat")) {
   if (!inherits(.chores_chat, "Chat")) {
     cli::cli_inform(
       c(
-        "!" = "The option {cli::col_blue('.chores_chat')} must be an ellmer
+        "!" = "The option {cli::col_blue('chores.chat')} must be an ellmer
          Chat object, not {.obj_type_friendly { .chores_chat}}.",
         "i" = "See \"Choosing a model\" in
         {.code vignette(\"chores\", package = \"chores\")} to learn more."

@@ -1,3 +1,7 @@
+get_chores_dir <- function() {
+  getOption("chores.dir", getOption(".chores_dir", file.path("~", ".config", "chores")))
+}
+
 #' The prompt directory
 #'
 #' @description
@@ -8,7 +12,7 @@
 #'
 #' * `directory_path()` returns the path to the prompt directory.
 #' * `directory_set()` changes the path to the prompt directory (by setting
-#'   the option `.chores_dir`).
+#'   the option `chores.dir`).
 #' * `directory_list()` enumerates all of the different prompts that currently
 #'   live in the directory (and provides clickable links to each).
 #'
@@ -45,8 +49,8 @@
 #'
 #' To load custom prompts every time the package is loaded, place your
 #' prompts in `directory_path()`. To change the prompt directory without
-#' loading the package, just set the `.chores_dir` option with
-#' `options(.chores_dir = some_dir)`. To load a directory of files that's not
+#' loading the package, just set the `chores.dir` option with
+#' `options(chores.dir = some_dir)`. To load a directory of files that's not
 #' the prompt directory, provide a `dir` argument to `directory_load()`.
 #'
 #' @returns
@@ -137,7 +141,7 @@ directory_list <- function() {
 #' @rdname directory
 #' @export
 directory_path <- function() {
-  getOption(".chores_dir", default = file.path("~", ".config", "chores"))
+  get_chores_dir()
 }
 
 #' @rdname directory
@@ -153,7 +157,7 @@ directory_set <- function(dir) {
     )
   }
 
-  options(.chores_dir = dir)
+  options(chores.dir = dir)
 
   invisible(dir)
 }
