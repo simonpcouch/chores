@@ -11,8 +11,8 @@
 #' of `r glue::glue_collapse(paste0("[", glue::double_quote(default_chores), "]", "[", default_chores, "_helper", "]"), ", ", last = " or ")`,
 #' though custom helpers can be added with [prompt_new()].
 #' @param .chores_chat An ellmer Chat, e.g.
-#' `function() ellmer::chat_anthropic()`. Defaults to the option by the same name,
-#' so e.g. set `options(.chores_chat = ellmer::chat_anthropic())` in your
+#' `function() ellmer::chat_claude()`. Defaults to the option by the same name,
+#' so e.g. set `options(.chores_chat = ellmer::chat_claude())` in your
 #' `.Rprofile` to configure chores with ellmer every time you start a new R session.
 #'
 #' @returns
@@ -22,7 +22,7 @@
 #' # requires an API key and sets options
 #' \dontrun{
 #' # to create a chat with claude:
-#' .init_helper(.chores_chat = ellmer::chat_anthropic())
+#' .init_helper(.chores_chat = ellmer::chat_claude())
 #'
 #' # or with OpenAI's 4o-mini:
 #' .init_helper(.chores_chat = ellmer::chat_openai(model = "gpt-4o-mini"))

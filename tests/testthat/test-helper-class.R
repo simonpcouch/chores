@@ -1,7 +1,7 @@
 test_that("can find the previous helper", {
   skip_if(identical(Sys.getenv("ANTHROPIC_API_KEY"), ""))
   skip_if_not_installed("withr")
-  withr::local_options(.chores_chat = ellmer::chat_anthropic())
+  withr::local_options(.chores_chat = ellmer::chat_claude())
 
   cli_helper <- .init_helper("cli")
   expect_no_error(response <- cli_helper$chat("stop(\"Error message here\")"))
@@ -10,7 +10,7 @@ test_that("can find the previous helper", {
 test_that("chores_chat effectively integrates system prompt", {
   skip_if(identical(Sys.getenv("ANTHROPIC_API_KEY"), ""))
   skip_if_not_installed("withr")
-  withr::local_options(.chores_chat = ellmer::chat_anthropic())
+  withr::local_options(.chores_chat = ellmer::chat_claude())
 
   cli_helper <- .init_helper("cli")
   response <- cli_helper$chat("stop(\"Error message here\")")
