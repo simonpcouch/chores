@@ -90,8 +90,6 @@ cli::cli_abort(
 )
 ```
 
-Do not finish error messages with a hyphen and then some substitution.
-
 # About inline markup in the semantic cli
 
 Here is some documentation on cli markup from the cli package. Use cli markup where applicable.
