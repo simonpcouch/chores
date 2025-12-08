@@ -1,15 +1,16 @@
 # chores (development version)
 
+* Adjusted the default recommended models in documentation (#98).
+    - **Local models**: At the time of chores' last release, open-weights models that could reasonably run on a high-end laptop didn't do the trick for powering chores helpers. The Qwen3 4B Instruct 2507 release changed this; the model provides high-accuracy responses with low latency on high-end laptops. See the "Getting started with chores" vignette for more information.
+    - **OpenAI**: GPT-4o and GPT-4o-mini transitioned to GPT 4.1 and GPT 4.1 mini, respectively.
+    - **Anthropic**: Claude Sonnet 3.5 -> Claude Sonnet 3.7. Note that Sonnet 3.7 is not the newest available minimally-thinking model from Anthropic. The newer models like Sonnet and Haiku 4.5 tend to introduce backticks in responses and struggle to strictly follow the requested output format.
+
+* Reduced the cli helper prompt from ~4,100 to ~2,300 tokens for compatibility with default context window lenth of ollama and LM Studio, 4096. Previously, those applications would silently truncate the prompt, resulting in the model not receiving access to critical instructions about response format and appearing to ignore it entirely. The other default helper prompts were already well below the default limit.
+
 * Introduced `chores.chat` and `chores.dir` as the preferred option names,
   following standard R package option naming conventions. The legacy options
   `.chores_chat` and `.chores_dir` continue to work and will not 
   be deprecated (#99).
-
-* Bumped the default recommended models (#98).
-    - GPT-4o and GPT-4o-mini to GPT 4.1 and GPT 4.1 mini, respectively.
-    - Claude Sonnet 3.5 -> Claude Sonnet 3.7. Note that Sonnet 3.7 is not the newest available minimally-thinking model from Anthropic. The newer models like Sonnet and Haiku 4.5 tend to introduce backticks in responses and struggle to strictly follow the requested output format.
-
-* Reduced the cli helper prompt from ~4,100 to ~2,300 tokens for compatibility with default context window lenth of ollama and LM Studio, 4096. Previously, those applications would silently truncate the prompt, resulting in the model not receiving access to critical instructions about response format and appearing to ignore it entirely. The other default helper prompts were already well below the default limit.
 
 # chores 0.2.0
 
