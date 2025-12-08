@@ -45,6 +45,7 @@
 <ul><li>GPT-4o and GPT-4o-mini to GPT 4.1 and GPT 4.1 mini, respectively.</li>
 <li>Claude Sonnet 3.5 -&gt; Claude Sonnet 3.7. Note that Sonnet 3.7 is not the newest available minimally-thinking model from Anthropic. The newer models like Sonnet and Haiku 4.5 tend to introduce backticks in responses and struggle to strictly follow the requested output format.</li>
 </ul></li>
+<li><p>Reduced the cli helper prompt from ~4,100 to ~2,300 tokens for compatibility with default context window lenth of ollama and LM Studio, 4096. Previously, those applications would silently truncate the prompt, resulting in the model not receiving access to critical instructions about response format and appearing to ignore it entirely. The other default helper prompts were already well below the default limit.</p></li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.0" id="chores-020">chores 0.2.0<a class="anchor" aria-label="anchor" href="#chores-020"></a></h2><p class="text-muted">CRAN release: 2025-04-30</p>
