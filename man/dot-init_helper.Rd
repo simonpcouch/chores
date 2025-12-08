@@ -33,14 +33,14 @@ with \code{\link[=prompt_new]{prompt_new()}}.
 # to create a chat with claude:
 .init_helper(.chores_chat = ellmer::chat_claude())
 
-# or with OpenAI's GPT-4.1-mini:
-.init_helper(.chores_chat = ellmer::chat_openai(model = "gpt-4.1-mini"))
+# or with OpenAI's 4o-mini:
+.init_helper(.chores_chat = ellmer::chat_openai(model = "gpt-4o-mini"))
 
-# to set OpenAI's GPT-4.1-mini as the default model powering chores, for example,
+# to set OpenAI's 4o-mini as the default model powering chores, for example,
 # set the following option (possibly in your .Rprofile, if you'd like
 # them to persist across sessions):
 options(
-  .chores_chat = ellmer::chat_openai(model = "gpt-4.1-mini")
+  .chores_chat = ellmer::chat_openai(model = "gpt-4o-mini")
 )
 }
 }
