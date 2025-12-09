@@ -8,9 +8,9 @@
 
 * Reduced the cli helper prompt from ~4,100 to ~2,300 tokens for compatibility with default context window lenth of ollama and LM Studio, 4096. Previously, those applications would silently truncate the prompt, resulting in the model not receiving access to critical instructions about response format and appearing to ignore it entirely. The other default helper prompts were already well below the default limit.
 
-* Introduced `chores.chat` and `chores.dir` as the preferred option names,following standard R package option naming conventions. The legacy options `.chores_chat` and `.chores_dir` continue to work and will not be deprecated (#99).
+* Introduced `chores.chat` and `chores.dir` as the preferred option names, following standard R package option naming conventions. The legacy options `.chores_chat` and `.chores_dir` continue to work and will not be deprecated (#99).
 
-* Bumped the minimum version of the streamy package to 0.2.1, which will resolve an issue where some newlines were removed from multi-line file writes in Positron.
+* Bumped the minimum version of the streamy package to 0.2.1, which will resolve an issue where some newlines were removed from multi-line file writes in Positron (#96).
 
 # chores 0.2.0
 
