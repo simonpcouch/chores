@@ -33,6 +33,10 @@
   will not be deprecated
   ([\#99](https://github.com/simonpcouch/chores/issues/99)).
 
+- Bumped the minimum version of the streamy package to 0.2.1, which will
+  resolve an issue where some newlines were removed from multi-line file
+  writes in Positron.
+
 ## chores 0.2.0
 
 CRAN release: 2025-04-30
