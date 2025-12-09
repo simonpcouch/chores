@@ -12,6 +12,10 @@
   `.chores_chat` and `.chores_dir` continue to work and will not 
   be deprecated (#99).
 
+* Bumped the minimum version of the streamy package to 0.2.1, which will resolve
+  an issue where some newlines were removed from multi-line file writes in 
+  Positron.
+
 # chores 0.2.0
 
 * In the helper selection app, clicking a helper in the selectize will now 
