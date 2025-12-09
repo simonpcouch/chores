@@ -1,4 +1,4 @@
-# chores (development version)
+# chores 0.3.0
 
 * Adjusted the default recommended models in documentation (#98).
 

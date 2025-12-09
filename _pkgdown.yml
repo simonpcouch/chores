@@ -2,6 +2,9 @@ url: https://simonpcouch.github.io/chores/
 template:
   bootstrap: 5
 
+development:
+  mode: auto
+  
 reference:
   - title: "Using chores"
     desc: >
