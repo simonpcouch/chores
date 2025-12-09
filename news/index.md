@@ -28,14 +28,15 @@
   default limit.
 
 - Introduced `chores.chat` and `chores.dir` as the preferred option
-  names,following standard R package option naming conventions. The
+  names, following standard R package option naming conventions. The
   legacy options `.chores_chat` and `.chores_dir` continue to work and
   will not be deprecated
   ([\#99](https://github.com/simonpcouch/chores/issues/99)).
 
 - Bumped the minimum version of the streamy package to 0.2.1, which will
   resolve an issue where some newlines were removed from multi-line file
-  writes in Positron.
+  writes in Positron
+  ([\#96](https://github.com/simonpcouch/chores/issues/96)).
 
 ## chores 0.2.0
 
