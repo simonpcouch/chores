@@ -113,10 +113,10 @@ chores extension package.
 
 The cost of using helpers depends on 1) the length of the underlying
 prompt for a given helper and 2) the cost per token of the chosen model.
-Using the cli helper with Anthropic’s Claude Sonnet 3.5, for example,
+Using the cli helper with Anthropic’s Claude Sonnet 3.7, for example,
 [costs something
 like](https://simonpcouch.github.io/chores/reference/cli_helper.html#cost)
-\$15 per 1,000 code refactorings, while using the testthat helper with
+\$9 per 1,000 code refactorings, while using the testthat helper with
 OpenAI’s GPT 4o-mini would cost something like \$1 per 1,000
 refactorings. Chore helpers using a local model like Qwen3 4B Instruct
 2507 are free and keep your code fully private, though with slightly
