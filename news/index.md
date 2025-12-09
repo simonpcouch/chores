@@ -1,6 +1,6 @@
 # Changelog
 
-## chores (development version)
+## chores 0.3.0
 
 - Adjusted the default recommended models in documentation
   ([\#98](https://github.com/simonpcouch/chores/issues/98)).

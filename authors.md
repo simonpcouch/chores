@@ -14,13 +14,13 @@ Source:
 [`DESCRIPTION`](https://github.com/simonpcouch/chores/blob/main/DESCRIPTION)
 
 Couch S (2025). *chores: A Collection of Large Language Model
-Assistants*. R package version 0.2.0.9000,
+Assistants*. R package version 0.3.0,
 <https://github.com/simonpcouch/chores>.
 
     @Manual{,
       title = {chores: A Collection of Large Language Model Assistants},
       author = {Simon Couch},
       year = {2025},
-      note = {R package version 0.2.0.9000},
+      note = {R package version 0.3.0},
       url = {https://github.com/simonpcouch/chores},
     }
