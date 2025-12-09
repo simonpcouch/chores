@@ -1,0 +1,25 @@
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://simonpcouch.github.io/chores/dev/CODE_OF_CONDUCT.html</loc></url>
+<url><loc>https://simonpcouch.github.io/chores/dev/CONTRIBUTING.html</loc></url>
+<url><loc>https://simonpcouch.github.io/chores/dev/LICENSE-text.html</loc></url>
+<url><loc>https://simonpcouch.github.io/chores/dev/LICENSE.html</loc></url>
+<url><loc>https://simonpcouch.github.io/chores/dev/SUPPORT.html</loc></url>
+<url><loc>https://simonpcouch.github.io/chores/dev/articles/chores.html</loc></url>
+<url><loc>https://simonpcouch.github.io/chores/dev/articles/custom.html</loc></url>
+<url><loc>https://simonpcouch.github.io/chores/dev/articles/gallery.html</loc></url>
+<url><loc>https://simonpcouch.github.io/chores/dev/articles/index.html</loc></url>
+<url><loc>https://simonpcouch.github.io/chores/dev/authors.html</loc></url>
+<url><loc>https://simonpcouch.github.io/chores/dev/index.html</loc></url>
+<url><loc>https://simonpcouch.github.io/chores/dev/news/index.html</loc></url>
+<url><loc>https://simonpcouch.github.io/chores/dev/reference/chores-package.html</loc></url>
+<url><loc>https://simonpcouch.github.io/chores/dev/reference/cli_helper.html</loc></url>
+<url><loc>https://simonpcouch.github.io/chores/dev/reference/directory.html</loc></url>
+<url><loc>https://simonpcouch.github.io/chores/dev/reference/dot-init_addin.html</loc></url>
+<url><loc>https://simonpcouch.github.io/chores/dev/reference/dot-init_helper.html</loc></url>
+<url><loc>https://simonpcouch.github.io/chores/dev/reference/helper_options.html</loc></url>
+<url><loc>https://simonpcouch.github.io/chores/dev/reference/index.html</loc></url>
+<url><loc>https://simonpcouch.github.io/chores/dev/reference/prompt.html</loc></url>
+<url><loc>https://simonpcouch.github.io/chores/dev/reference/roxygen_helper.html</loc></url>
+<url><loc>https://simonpcouch.github.io/chores/dev/reference/testthat_helper.html</loc></url>
+</urlset>
+

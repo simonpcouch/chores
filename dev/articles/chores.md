@@ -1,0 +1,153 @@
+# Getting started with chores
+
+Chore helpers are persistent, ergonomic LLM assistants designed to help
+you complete repetitive, hard-to-automate tasks quickly.
+
+``` r
+library(chores)
+```
+
+The chores package ships with a number of pre-engineered “chore
+helpers.” A chore is a keyword that succinctly describes what the helper
+is intended to do and serves as an identifier to match the helper with
+its *prompt* and *interface*. A helper’s prompt is just a markdown file
+with enough context and examples to teach a model to carry out a given
+task well. A helper’s interface determines whether it replaces,
+prefixes, or suffixes the selected code. For example:
+
+- The `"testthat"` helper helps you transition your R package’s unit
+  tests to the third edition of testthat. Its prompt shows the model how
+  to convert to snapshot tests, disentangle nested expectations, and
+  transition from deprecated functions. It replaces the selected code.
+- The `"roxygen"` helper helps you quickly template out roxygen
+  documentation for a function. Its prompt shows the model how to write
+  high-quality stub `@param` and `@returns` entries that can be later
+  extended by the developer. It prefixes the selected code.
+
+## Choosing a model
+
+The chores addin supports any model supported by
+[ellmer](https://ellmer.tidyverse.org/). When choosing a model for use
+with chores, you’ll want to the use the most performant model possible
+that satisfies your privacy needs; chores automatically passes along
+your selected code to your chosen model, so it’s especially important to
+consider data privacy when using LLMs with chores.
+
+chores uses the `chores.chat` option to configure which model powers the
+addin. `chores.chat` should be set to an ellmer Chat object. For
+example, to use Anthropic’s Claude, you might write
+`options(chores.chat = ellmer::chat_claude())`. Paste that code in your
+`.Rprofile` via `usethis::edit_r_profile()` to always use the same model
+every time you start an R session.
+
+If you’re using ellmer inside a organization, you’ll be limited to what
+your IT department allows, which is likely to be one provided by a big
+cloud provider, e.g. `chat_azure()`, `chat_bedrock()`,
+`chat_databricks()`, or `chat_snowflake()`. If you’re using ellmer for
+your own exploration, you’ll have a lot more freedom, so we have a few
+recommendations to help you get started:
+
+- As of early 2025, Anthropic’s **Claude Sonnet 3.5** is a very powerful
+  model for code assistance and is the model I’ve used while developing
+  the package. If you want to use Claude, you’ll need to register an API
+  key at `https://console.anthropic.com/` to the environment variable
+  `ANTHROPIC_API_KEY` and then set
+  `options(chores.chat = ellmer::chat_claude())`.
+
+- Regarding OpenAI’s models, `chat_openai()` defaults to **GPT-4o**, but
+  you can use `model = "gpt-4o-mini"` for a cheaper, lower-quality
+  model; to use an OpenAI model, you’ll need to set the options
+  `options(chores.chat = ellmer::chat_openai(model = "gpt-4o"))` and
+  register your OpenAI API key with the `OPENAI_API_KEY` environment
+  variable.
+
+- You can use a **local model**, which allows you to run models on your
+  own computer. Local models don’t share your data and are free to use,
+  though they’re slightly less accurate than the state of the art hosted
+  models. We recommend **Qwen3 4B Instruct 2507** for local use with
+  chores; at least with MLX on Mac, it takes up 2.5GB of space and
+  requires 2.5GB of RAM to run.
+
+  **On Apple Silicon (Mac M-series)**, we recommend [LM
+  Studio](https://lmstudio.ai/). Click “Discover”, search “Qwen3 4B
+  Instruct 2507”, and click “Download.” Once downloaded, click the
+  “Developer” tab and change the Status from Stopped to Running. Then
+  configure chores with:
+
+``` r
+qwen3_4b <- ellmer::chat_openai_compatible(
+  base_url = "http://127.0.0.1:1234/v1",
+  model = "qwen/qwen3-4b-2507"
+)
+
+options(chores.chat = qwen3_4b)
+```
+
+**On other systems**, use [Ollama](https://ollama.com). Run
+`ollama pull qwen3:4b` at the terminal, then set
+`options(chores.chat = ellmer::chat_ollama(model = "qwen3:4b"))`.
+
+## The chores addin
+
+Rather than through package functions directly, helpers are interfaced
+with via the chores addin. Once you have a default model set up, you’re
+ready to use the package in any RStudio session (even if you haven’t
+loaded the package yet).
+
+Just:
+
+- Select some code.
+- Trigger the chores addin.
+- Type in a helper “chore.” Once it’s autocompleted, press Enter.
+- Watch your code be rewritten.
+
+![A screencast of an RStudio session. An .R file is open in the editor
+with a function definition. The user selects various subsets of the
+function and, after selecting from a dropdown menu, the helper assistant
+converts erroring code and drafts function
+documentation.](https://raw.githubusercontent.com/simonpcouch/chores/refs/heads/main/inst/figs/addin.gif)
+
+Chore helpers are interfaced with the via the chores addin. For easiest
+access, we recommend registering the chores addin to a keyboard
+shortcut.
+
+**In RStudio**, navigate to
+`Tools > Modify Keyboard Shortcuts > Search "Chores"`—we suggest
+`Ctrl+Alt+C` (or `Ctrl+Cmd+C` on macOS).
+
+**In Positron**, you’ll need to open the command palette, run “Open
+Keyboard Shortcuts (JSON)”, and paste the following into your
+`keybindings.json`:
+
+``` json
+    {
+        "key": "Ctrl+Cmd+C",
+        "command": "workbench.action.executeCode.console",
+        "when": "editorTextFocus",
+        "args": {
+            "langId": "r",
+            "code": "chores::.init_addin()",
+            "focus": true
+        }
+    }
+```
+
+The analogous keybinding on non-macOS is `Ctrl+Alt+C`. That said, change
+the `"key"` entry to any keybinding you wish!
+
+Once those steps are completed, you’re ready to use helpers with a
+keyboard shortcut.
+
+## Adding custom helpers
+
+While the chores package comes with three helpers for package
+development, one can use helpers for all sorts of coding tasks in R,
+from interactive data analysis to authoring with Quarto, or even for
+coding tasks in languages other than R! All you need to set up your own
+helper is a markdown file.
+
+To learn more about adding custom helpers as well as how to share them
+with others, see the [“Custom helpers”
+vignette](https://simonpcouch.github.io/chores/dev/articles/custom.md)
+with
+[`vignette("custom", package = "chores")`](https://simonpcouch.github.io/chores/dev/articles/custom.md).

@@ -1,0 +1,181 @@
+# Custom helpers
+
+While the chores package provides a number of pre-engineered helpers for
+R package development, one can use helpers for all sorts of coding tasks
+in R, from interactive data analysis to authoring with Quarto, or even
+for coding tasks in languages other than R! All you need to set up your
+own helper is a markdown file. This vignette provides guidance on how to
+write your own helpers to help you with repetitive, hard-to-automate
+tasks.
+
+``` r
+library(chores)
+```
+
+## What are helpers for?
+
+When building a custom chore helper, you should first ask yourself a few
+questions to help decide whether a chore helper is the right tool for
+the job.
+
+**Can this be easily automated without an LLM?** LLMs are quite good at
+edge-case rich tasks with “squishy,” hard-to-evaluate output. Compared
+to many other pieces of software, LLMs are incredibly flexible and able
+to handle edge cases without extensive engineering. At the same time,
+their output is not deterministic and always requires verification. For
+your given problem, would you be better off spending the time you’d use
+to write and revise a prompt and then verifying every output it makes
+from then on instead just writing some R code and unit tests?
+
+Users interface with helpers via the active selection. **Would a
+selection provide enough context for the helper to do its job?** That
+is, besides the fixed system prompt attached to your helper, the only
+information the LLM has about your problem is the text that you’ve
+selected with your cursor. Would the model need access to a whole file,
+or a whole project, in order to do its job? In that case, some interface
+other than a helper may be a better fit.
+
+Chore helpers return output by replacing, prefixing, or suffixing the
+current selection. **Is this the right place for output in your use
+case?** If output ultimately needs to be cut and pasted into a different
+file, for example, helpers may not be the right tool.
+
+Finally, **is this kind of output immediately verifiable?** The first
+element to consider here is how much stuff the model ultimately
+generates. A few sentences or a couple lines of code can be quickly
+audited and confirmed to be sound. The second element to consider is
+whether the output can be programmatically checked. For example, does
+generated code run without error (or, at least, is it syntactically
+valid)?
+
+Answering these questions can help you better understand whether your
+problem is best solved with a helper or, instead, by a human or “normal”
+code or some other LLM interface.
+
+## The prompt directory
+
+The easiest way to write a new chore helper that’s loaded every time you
+load R is to add a markdown file to the *prompt directory*. The prompt
+directory is a folder of markdown files that serves as a library of
+possible helpers. By default, the prompt directory lives at
+`~/.config/chores`, but that default can be changed by adding a
+`chores.dir` option in your `.Rprofile` using
+`options(chores.dir = "some/dir/")`.
+[`directory_path()`](https://simonpcouch.github.io/chores/dev/reference/directory.md)
+returns the path to the directory,
+[`directory_set()`](https://simonpcouch.github.io/chores/dev/reference/directory.md)
+changes it,
+[`directory_list()`](https://simonpcouch.github.io/chores/dev/reference/directory.md)
+enumerates all of the prompts that currently live in it, and
+[`directory_load()`](https://simonpcouch.github.io/chores/dev/reference/directory.md)
+registers/refreshes all of the prompts in the directory with the chores
+package.
+
+To create a new helper, add a prompt to chores’ prompt directory with
+[`prompt_new()`](https://simonpcouch.github.io/chores/dev/reference/prompt.md).
+You’ll need to supply a `chore` (a single keyword describing what the
+helper does, like `"roxygen"`) and an `interface` describing how the
+helper will interact with the selection (one of `"replace"`, `"prefix"`,
+or `"suffix"`). You can also “pre-fill” the contents of the prompt by
+supplying a file path with the `contents` argument.
+
+For example, running:
+
+``` r
+prompt_new("proofread", "replace")
+prompt_new("summarize", "prefix")
+```
+
+Would result in a prompt directory that looks like:
+
+    /
+    |-- .config/
+    |   |-- chores/
+    |       |-- proofread-replace.md
+    |       |-- summarize-prefix.md
+
+In that case, chores would register two custom helpers when you call
+[`library(chores)`](https://github.com/simonpcouch/chores) (or
+[`directory_load()`](https://simonpcouch.github.io/chores/dev/reference/directory.md).
+One of them is for the `"proofread"` chore and will replace the selected
+text with a proofread version (according to the instructions contained
+in the markdown file itself). The other is for the chore `"summarize"`
+and will prefix the selected text with a summarized version (again,
+according to the markdown file’s instructions).
+
+- Files without a `.md` extension are ignored.
+- Files with a `.md` extension must contain only one hyphen in their
+  filename, and the text following the hyphen must be one of `replace`,
+  `prefix`, or `suffix`.
+
+The best way to register helpers for your own personal use is via the
+prompt directory. However, if you intend to share helpers with others,
+you may be interested in creating a helper extension package. (If you do
+so, please add them to the chores gallery! Check it out at
+[`vignette("gallery", package = "chores")`](https://simonpcouch.github.io/chores/dev/articles/gallery.md).)
+
+## Extension packages
+
+chores extension packages allow you to more flexibly share helper
+prompts with others. Putting together a helper extension package is
+straightforward:
+
+- Place one markdown file per new chore helper in `inst/prompts/`. This
+  folder will take the same format as the prompt directory described
+  above.
+- Place a call to
+  [`chores::directory_load()`](https://simonpcouch.github.io/chores/dev/reference/directory.md)
+  in the package’s `.onLoad()`, referencing the extension package’s
+  `system.file("prompts", package = "yourpackage")`. This will
+  automatically register your package’s prompts with chores when the
+  extension is loaded.
+
+For an example chores extension, see
+[simonpcouch/palpable](https://github.com/simonpcouch/palpable).
+
+chores extension packages also allow you to document what your helpers
+are for and how they tend to behave in context; situate your
+documentation files at `?chore_helper`, replacing `chore` with your new
+chore helper’s name. Then, with your package loaded, users can view a
+high-level description of the helper’s behavior and a gallery of
+examples. See
+[`?cli_helper`](https://simonpcouch.github.io/chores/dev/reference/cli_helper.md)
+for an example helper help-page, with source code
+[here](https://github.com/simonpcouch/chores/blob/main/R/doc-helper-cli.R).
+
+## Using others’ custom helpers
+
+chores is designed to make it as easy as possible to always have the
+helpers you need on hand.
+
+**To use others’ custom helpers that aren’t situated in extension
+packages**, use
+[`prompt_new()`](https://simonpcouch.github.io/chores/dev/reference/prompt.md)
+with a `contents` argument. For example, Hannah Frick wrote a helper to
+transition R code chunks from R Markdown-style chunk headers to Quarto’s
+yaml syntax and uploaded it as a GitHub Gist
+[here](https://gist.github.com/hfrick/1ca8fc2cb2a4409b743e8120c6cc2223#file-quartochunk-replace-md).
+To use her helper, we could write:
+
+``` r
+prompt_new(
+  "quartochunk", 
+  "replace", 
+  contents = "https://gist.githubusercontent.com/hfrick/1ca8fc2cb2a4409b743e8120c6cc2223/raw/a9703edfbd4e83839af0278c33add1b33e243d02/quartochunk-replace.md"
+)
+```
+
+After running that code, the `quartochunk` helper will be available to
+you every time you trigger the chores addin.
+
+**To use others’ custom helpers from extension packages**, simply load
+the chores extension in your `.Rprofile`. You might use
+`usethis::edit_r_profile()` to open the file, then drop in the following
+line:
+
+``` r
+library(choresextensionname)
+```
+
+Then, restart R, and that package’s helpers will always be available to
+you when you trigger the chores addin.
