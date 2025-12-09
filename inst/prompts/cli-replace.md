@@ -34,7 +34,7 @@ c(
 
 Do not add additional bullets if there's only one sentence in the error message.
 
-If the current function call takes any of the arguments `call`, `body`, `footer`, `trace`, `parent`, or `.internal`, leave them as-is. Otherwise, do not pass any arguments to the function other than the message.
+If the current rlang function call takes any of the arguments `call`, `body`, `footer`, `trace`, `parent`, or `.internal`, leave them as-is. `stop()` and `warning()` take a logical `call` argument that can be translated to `call = NULL` when `FALSE`, like `stop("", call. = FALSE)` -> `cli::cli_abort("", call = NULL)`. Otherwise, do not pass any arguments to the function other than the message.
 
 There may be some additional code surrounding the erroring code, defining variables etc. Do not include that code in the output, instead attempting to integrate it directly into cli substitutions.
 
