@@ -28,7 +28,7 @@
   default limit.
 
 - Introduced `chores.chat` and `chores.dir` as the preferred option
-  names, following standard R package option naming conventions. The
+  names,following standard R package option naming conventions. The
   legacy options `.chores_chat` and `.chores_dir` continue to work and
   will not be deprecated
   ([\#99](https://github.com/simonpcouch/chores/issues/99)).
