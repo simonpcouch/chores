@@ -2,7 +2,15 @@
 
 ## chores (development version)
 
+- [`prompt_new()`](https://simonpcouch.github.io/chores/dev/reference/prompt.md)
+  gains an `overwrite` argument. When `overwrite = TRUE`, an existing
+  prompt for the given chore will be overwritten with the provided
+  `contents`
+  ([\#103](https://github.com/simonpcouch/chores/issues/103)).
+
 ## chores 0.3.0
+
+CRAN release: 2025-12-09
 
 - Adjusted the default recommended models in documentation
   ([\#98](https://github.com/simonpcouch/chores/issues/98)).

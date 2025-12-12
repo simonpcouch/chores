@@ -22,7 +22,7 @@ when you next trigger the helper addin.
 ## Usage
 
 ``` r
-prompt_new(chore, interface, contents = NULL)
+prompt_new(chore, interface, contents = NULL, overwrite = FALSE)
 
 prompt_remove(chore)
 
@@ -52,6 +52,11 @@ prompt_edit(chore)
   read with [`readLines()`](https://rdrr.io/r/base/readLines.html) is
   fair game; this could be a local file, a "raw" URL to a GitHub Gist or
   file in a GitHub repository, etc.
+
+- overwrite:
+
+  If `TRUE` and a prompt for the given `chore` already exists, overwrite
+  it. Defaults to `FALSE`.
 
 ## Value
 
