@@ -7,7 +7,7 @@
 \alias{prompt_edit}
 \title{Working with helper prompts}
 \usage{
-prompt_new(chore, interface, contents = NULL)
+prompt_new(chore, interface, contents = NULL, overwrite = FALSE)
 
 prompt_remove(chore)
 
@@ -26,6 +26,9 @@ how the helper will interact with the selection. For example, the
 "pre-fill" the file. Anything file ending in \code{.md} or \code{.markdown} that can be
 read with \code{readLines()} is fair game; this could be a local file, a "raw"
 URL to a GitHub Gist or file in a GitHub repository, etc.}
+
+\item{overwrite}{If \code{TRUE} and a prompt for the given \code{chore} already exists,
+overwrite it. Defaults to \code{FALSE}.}
 }
 \value{
 Each \verb{prompt_*()} function returns the file path to the created, edited, or

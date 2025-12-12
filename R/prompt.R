@@ -28,6 +28,8 @@
 #' "pre-fill" the file. Anything file ending in `.md` or `.markdown` that can be
 #' read with `readLines()` is fair game; this could be a local file, a "raw"
 #' URL to a GitHub Gist or file in a GitHub repository, etc.
+#' @param overwrite If `TRUE` and a prompt for the given `chore` already exists,
+#' overwrite it. Defaults to `FALSE`.
 #'
 #' @seealso The [directory] help-page for more on working with prompts in
 #' batch using `directory_*()` functions, and `vignette("custom", package = "chores")`
@@ -74,21 +76,23 @@
 
 #' @rdname prompt
 #' @export
-prompt_new <- function(chore, interface, contents = NULL) {
+prompt_new <- function(chore, interface, contents = NULL, overwrite = FALSE) {
   check_chore(chore)
   arg_match0(interface, supported_interfaces)
   check_string(contents, allow_null = TRUE)
+  check_bool(overwrite)
+  if (overwrite && is.null(contents)) {
+    cli::cli_abort("{.arg contents} must be provided when {.code overwrite = TRUE}.")
+  }
 
   current_path <- try_fetch(prompt_locate(chore), error = function(cnd) {
     NULL
   })
-  if (!is.null(current_path)) {
-    suggestion <- c(
-      "i" = "You can edit it with {.code prompt_edit({.val {chore}})}"
-    )
+  if (!is.null(current_path) && !overwrite) {
     cli::cli_abort(c(
       "There's already a helper for chore {.val {chore}}.",
-      suggestion
+      "i" = "You can edit it with {.code prompt_edit({.val {chore}})}",
+      "i" = "Use {.code overwrite = TRUE} to overwrite the existing prompt."
     ))
   }
 
@@ -102,6 +106,12 @@ prompt_new <- function(chore, interface, contents = NULL) {
   # something as it creates the file?
   file.create(path)
   prompt_prefill(path = path, contents = contents, chore = chore)
+
+  if (overwrite) {
+    prompt <- paste0(suppressWarnings(readLines(path)), collapse = "\n")
+    .stash_prompt(prompt, chore)
+  }
+
   if (interactive()) {
     file.edit(path)
   }

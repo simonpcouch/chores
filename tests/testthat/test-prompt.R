@@ -131,6 +131,25 @@ test_that("default chores can't be overwritten or deleted (#59)", {
   expect_snapshot(error = TRUE, prompt_remove("cli"))
 })
 
+test_that("prompt_new errors informatively when chore already exists", {
+  tmp_dir <- withr::local_tempdir()
+  withr::local_options(chores.dir = NULL, .chores_dir = tmp_dir)
+  testthat::local_mocked_bindings(interactive = function(...) FALSE)
+
+  prompt_new("existingchore", "replace")
+  withr::defer(prompt_remove("existingchore"))
+
+  expect_snapshot(error = TRUE, prompt_new("existingchore", "replace"))
+})
+
+test_that("prompt_new errors when overwrite = TRUE but contents is NULL", {
+  tmp_dir <- withr::local_tempdir()
+  withr::local_options(chores.dir = NULL, .chores_dir = tmp_dir)
+  testthat::local_mocked_bindings(interactive = function(...) FALSE)
+
+  expect_snapshot(error = TRUE, prompt_new("newchore", "replace", overwrite = TRUE))
+})
+
 test_that("is_markdown_file works", {
   expect_true(is_markdown_file("some_file.md"))
   expect_true(is_markdown_file("some_file.Md"))

@@ -1,5 +1,8 @@
 # chores (development version)
 
+* `prompt_new()` gains an `overwrite` argument. When `overwrite = TRUE`,
+  an existing prompt for the given chore will be overwritten with the provided `contents` (#103).
+
 # chores 0.3.0
 
 * Adjusted the default recommended models in documentation (#98).

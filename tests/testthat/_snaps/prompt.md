@@ -45,3 +45,21 @@
       Error in `prompt_remove()`:
       ! Default chores cannot be edited or removed.
 
+# prompt_new errors informatively when chore already exists
+
+    Code
+      prompt_new("existingchore", "replace")
+    Condition
+      Error in `prompt_new()`:
+      ! There's already a helper for chore "existingchore".
+      i You can edit it with `prompt_edit("existingchore")`
+      i Use `overwrite = TRUE` to overwrite the existing prompt.
+
+# prompt_new errors when overwrite = TRUE but contents is NULL
+
+    Code
+      prompt_new("newchore", "replace", overwrite = TRUE)
+    Condition
+      Error in `prompt_new()`:
+      ! `contents` must be provided when `overwrite = TRUE`.
+
