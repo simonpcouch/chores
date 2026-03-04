@@ -97,7 +97,7 @@ using prompts from others.
 tmp_dir <- withr::local_tempdir()
 directory_set(tmp_dir)
 #> Error in directory_set(tmp_dir): `dir` doesn't exist.
-#> ℹ If desired, create it with `dir.create("/tmp/RtmpYSFhq4/file19d3549344a4",
+#> ℹ If desired, create it with `dir.create("/tmp/RtmpVtODcB/file19a26807cfc",
 #>   recursive = TRUE)`.
 
 # print out the current prompt directory
