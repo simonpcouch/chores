@@ -31,9 +31,11 @@
 - .chores_chat:
 
   An ellmer Chat, e.g.
-  [`ellmer::chat_claude()`](https://ellmer.tidyverse.org/reference/chat_anthropic.html).
+  [`ellmer::chat_claude()`](https://ellmer.tidyverse.org/reference/chat_anthropic.html)
+  or
+  [`ellmer::chat_google_gemini()`](https://ellmer.tidyverse.org/reference/chat_google_gemini.html).
   Defaults to the `chores.chat` option, so e.g. set
-  `options(chores.chat = ellmer::chat_claude(model = "claude-3-7-sonnet-20250219"))`
+  `options(chores.chat = ellmer::chat_claude(model = "claude-haiku-4-5"))`
   in your `.Rprofile` to configure chores with ellmer every time you
   start a new R session.
 
@@ -47,16 +49,26 @@ A Helper object, which is a subclass of an ellmer chat.
 # requires an API key and sets options
 if (FALSE) { # \dontrun{
 # to create a chat with claude:
-.init_helper(.chores_chat = ellmer::chat_claude(model = "claude-3-7-sonnet-20250219"))
+.init_helper(.chores_chat = ellmer::chat_claude(model = "claude-haiku-4-5"))
 
-# or with OpenAI's GPT-4o-mini:
-.init_helper(.chores_chat = ellmer::chat_openai(model = "gpt-4o-mini"))
+# or with OpenAI's GPT-4.1-mini:
+.init_helper(.chores_chat = ellmer::chat_openai(model = "gpt-4.1-mini"))
 
-# to set OpenAI's GPT-4o-mini as the default model powering chores, for example,
+# or with Google's Gemini 3 Flash:
+.init_helper(.chores_chat = ellmer::chat_google_gemini(
+  model = "gemini-3-flash-preview",
+  api_args = list(
+    generationConfig = list(
+      thinkingConfig = list(thinkingLevel = "minimal")
+    )
+  )
+))
+
+# to set OpenAI's GPT-4.1-mini as the default model powering chores, for example,
 # set the following option (possibly in your .Rprofile, if you'd like
 # them to persist across sessions):
 options(
-  chores.chat = ellmer::chat_openai(model = "gpt-4o-mini")
+  chores.chat = ellmer::chat_openai(model = "gpt-4.1-mini")
 )
 } # }
 ```
