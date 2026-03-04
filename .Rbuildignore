@@ -16,3 +16,5 @@ inst/example.R
 ^[\.]?air\.toml$
 ^\.vscode$
 .claude/
+^\.positai$
+^\.claude$
