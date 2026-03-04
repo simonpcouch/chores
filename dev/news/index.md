@@ -2,6 +2,10 @@
 
 ## chores (development version)
 
+- Adjusted the recommended models in documentation.
+
+  - **Anthropic**: Claude Sonnet 3.7 -\> Claude Haiku 4.5.
+
 - [`prompt_new()`](https://simonpcouch.github.io/chores/dev/reference/prompt.md)
   gains an `overwrite` argument. When `overwrite = TRUE`, an existing
   prompt for the given chore will be overwritten with the provided
