@@ -4,7 +4,7 @@
       .init_helper("cli")
     Message
       
-      -- A cli chore helper using gemini-3-flash-preview. 
+      -- A cli chore helper using claude-haiku-4-5. 
 
 ---
 
@@ -12,7 +12,7 @@
       .init_helper("testthat")
     Message
       
-      -- A testthat chore helper using gemini-3-flash-preview. 
+      -- A testthat chore helper using claude-haiku-4-5. 
 
 # can use other models
 

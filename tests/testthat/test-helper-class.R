@@ -2,7 +2,8 @@ test_that("can find the previous helper", {
   skip_if(identical(Sys.getenv("ANTHROPIC_API_KEY"), ""))
   skip_if_not_installed("withr")
   withr::local_options(
-    .chores_chat = ellmer::chat_claude(model = "claude-haiku-4-5")
+    chores.chat = ellmer::chat_claude(model = "claude-haiku-4-5"),
+    .chores_chat = NULL
   )
 
   cli_helper <- .init_helper("cli")
@@ -13,7 +14,8 @@ test_that("chores_chat effectively integrates system prompt", {
   skip_if(identical(Sys.getenv("ANTHROPIC_API_KEY"), ""))
   skip_if_not_installed("withr")
   withr::local_options(
-    .chores_chat = ellmer::chat_claude(model = "claude-haiku-4-5")
+    chores.chat = ellmer::chat_claude(model = "claude-haiku-4-5"),
+    .chores_chat = NULL
   )
 
   cli_helper <- .init_helper("cli")

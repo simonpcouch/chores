@@ -4,7 +4,7 @@
       env_get(chores_env(), ".helper_last")
     Message
       
-      -- A cli chore helper using gemini-3-flash-preview. 
+      -- A cli chore helper using claude-haiku-4-5. 
 
 ---
 
@@ -12,7 +12,7 @@
       env_get(chores_env(), ".helper_last_cli")
     Message
       
-      -- A cli chore helper using gemini-3-flash-preview. 
+      -- A cli chore helper using claude-haiku-4-5. 
 
 ---
 

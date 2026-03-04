@@ -1,10 +1,10 @@
 # helper addition and removal works
 
     Code
-      helper_boopery
+      helper_echo
     Message
       
-      -- A boopery chore helper using gemini-3-flash-preview. 
+      -- A echotest chore helper using claude-haiku-4-5. 
 
 # helper addition with bad inputs
 

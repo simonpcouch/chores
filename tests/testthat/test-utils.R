@@ -3,7 +3,8 @@ test_that(".helper_last is up to date with most recent helper", {
   skip_if(identical(Sys.getenv("OPENAI_API_KEY"), ""))
   skip_if_not_installed("withr")
   withr::local_options(
-    .chores_chat = ellmer::chat_claude(model = "claude-haiku-4-5")
+    chores.chat = ellmer::chat_claude(model = "claude-haiku-4-5"),
+    .chores_chat = NULL
   )
 
   .init_helper("cli")
