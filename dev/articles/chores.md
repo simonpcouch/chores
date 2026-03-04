@@ -60,6 +60,25 @@ recommendations to help you get started:
   register your OpenAI API key with the `OPENAI_API_KEY` environment
   variable.
 
+- Google’s **Gemini 3 Flash** is also a strong option for code
+  assistance. We recommend setting the thinking level to `"minimal"` to
+  reduce latency. Register an API key at
+  `https://aistudio.google.com/apikey` to the environment variable
+  `GOOGLE_API_KEY` (or `GEMINI_API_KEY`) and then configure chores with:
+
+``` r
+options(
+  chores.chat = ellmer::chat_google_gemini(
+    model = "gemini-3-flash-preview",
+    api_args = list(
+      generationConfig = list(
+        thinkingConfig = list(thinkingLevel = "minimal")
+      )
+    )
+  )
+)
+```
+
 - You can use a **local model**, which allows you to run models on your
   own computer. Local models don’t share your data and are free to use,
   though they’re slightly less accurate than the state of the art hosted

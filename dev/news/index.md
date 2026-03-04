@@ -5,6 +5,9 @@
 - Adjusted the recommended models in documentation.
 
   - **Anthropic**: Claude Sonnet 3.7 -\> Claude Haiku 4.5.
+  - **OpenAI**: Updated documentation to reflect GPT 4.1 and GPT 4.1
+    mini model names.
+  - **Google**: Added Gemini 3 Flash as a recommended model.
 
 - [`prompt_new()`](https://simonpcouch.github.io/chores/dev/reference/prompt.md)
   gains an `overwrite` argument. When `overwrite = TRUE`, an existing
