@@ -4,7 +4,7 @@
       helper_boopery
     Message
       
-      -- A boopery chore helper using claude-3-7-sonnet-20250219. 
+      -- A boopery chore helper using gemini-3-flash-preview. 
 
 # helper addition with bad inputs
 

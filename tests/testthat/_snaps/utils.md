@@ -4,7 +4,7 @@
       env_get(chores_env(), ".helper_last")
     Message
       
-      -- A cli chore helper using claude-3-7-sonnet-20250219. 
+      -- A cli chore helper using gemini-3-flash-preview. 
 
 ---
 
@@ -12,7 +12,7 @@
       env_get(chores_env(), ".helper_last_cli")
     Message
       
-      -- A cli chore helper using claude-3-7-sonnet-20250219. 
+      -- A cli chore helper using gemini-3-flash-preview. 
 
 ---
 
@@ -20,7 +20,7 @@
       env_get(chores_env(), ".helper_last")
     Message
       
-      -- A cli chore helper using gpt-4o-mini. 
+      -- A cli chore helper using gpt-4.1-mini. 
 
 # chore checks error informatively
 

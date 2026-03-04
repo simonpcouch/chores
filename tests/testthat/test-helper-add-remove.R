@@ -15,7 +15,7 @@ test_that("helper addition and removal works", {
   expect_snapshot(helper_boopery)
   expect_true(".helper_last_boopery" %in% names(chores_env()))
 
-  res <- helper_boopery$chat("hey there")
+  res <- helper_boopery$chat("hey there", echo = FALSE)
   expect_true(grepl("bop", res))
 
   .helper_remove("boopery")

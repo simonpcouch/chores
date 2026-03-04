@@ -6,7 +6,7 @@ test_that("can find the previous helper", {
   )
 
   cli_helper <- .init_helper("cli")
-  expect_no_error(response <- cli_helper$chat("stop(\"Error message here\")"))
+  expect_no_error(response <- cli_helper$chat("stop(\"Error message here\")", echo = FALSE))
 })
 
 test_that("chores_chat effectively integrates system prompt", {
@@ -17,12 +17,12 @@ test_that("chores_chat effectively integrates system prompt", {
   )
 
   cli_helper <- .init_helper("cli")
-  response <- cli_helper$chat("stop(\"Error message here\")")
+  response <- cli_helper$chat("stop(\"Error message here\")", echo = FALSE)
   expect_true(grepl("cli_abort", response))
   expect_true(grepl("Error message here", response))
 
   testthat_helper <- .init_helper("testthat")
-  response <- testthat_helper$chat("expect_error(beep_bop_boop())")
+  response <- testthat_helper$chat("expect_error(beep_bop_boop())", echo = FALSE)
   expect_true(grepl("expect_snapshot", response))
   expect_true(grepl("beep_bop_boop", response))
 })
@@ -30,6 +30,7 @@ test_that("chores_chat effectively integrates system prompt", {
 test_that("fetch_chores_chat returns early with no option set", {
   skip_if(identical(Sys.getenv("ANTHROPIC_API_KEY"), ""))
   withr::local_options(.chores_chat = NULL)
+  withr::local_options(chores.chat = NULL)
   skip_if_not_installed("withr")
 
   expect_snapshot(.res <- fetch_chores_chat())
@@ -38,6 +39,7 @@ test_that("fetch_chores_chat returns early with no option set", {
 
 test_that("fetch_chores_chat returns early with bad config", {
   withr::local_options(.chores_chat = "chat")
+  withr::local_options(chores.chat = "chat")
   expect_snapshot(.res <- fetch_chores_chat())
   expect_null(.res)
 

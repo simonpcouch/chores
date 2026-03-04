@@ -4,7 +4,7 @@
       .init_helper("cli")
     Message
       
-      -- A cli chore helper using claude-3-7-sonnet-20250219. 
+      -- A cli chore helper using gemini-3-flash-preview. 
 
 ---
 
@@ -12,15 +12,15 @@
       .init_helper("testthat")
     Message
       
-      -- A testthat chore helper using claude-3-7-sonnet-20250219. 
+      -- A testthat chore helper using gemini-3-flash-preview. 
 
 # can use other models
 
     Code
-      .init_helper("cli", .chores_chat = ellmer::chat_openai(model = "gpt-4o-mini"))
+      .init_helper("cli", .chores_chat = ellmer::chat_openai(model = "gpt-4.1-mini"))
     Message
       
-      -- A cli chore helper using gpt-4o-mini. 
+      -- A cli chore helper using gpt-4.1-mini. 
 
 # errors informatively with bad chore
 
