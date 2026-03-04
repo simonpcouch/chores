@@ -30,6 +30,21 @@ If you're using ellmer inside a organization, you'll be limited to what your IT 
 
 * Regarding OpenAI's models, we recommend **GPT-4.1**, or `model = "gpt-4.1-mini"` for a cheaper, lower-quality model; to use an OpenAI model, you'll need to set the options `options(chores.chat = ellmer::chat_openai(model = "gpt-4.1"))` and register your OpenAI API key with the `OPENAI_API_KEY` environment variable.
 
+- Google's **Gemini 3 Flash** is also a strong option for code assistance. We recommend setting the thinking level to `"minimal"` to reduce latency. Register an API key at `https://aistudio.google.com/apikey` to the environment variable `GOOGLE_API_KEY` (or `GEMINI_API_KEY`) and then configure chores with:
+
+```r
+options(
+  chores.chat = ellmer::chat_google_gemini(
+    model = "gemini-3-flash-preview",
+    api_args = list(
+      generationConfig = list(
+        thinkingConfig = list(thinkingLevel = "minimal")
+      )
+    )
+  )
+)
+```
+
 - You can use a **local model**, which allows you to run models on your own computer. Local models don't share your data and are free to use, though they're slightly less accurate than the state of the art hosted models. We recommend **Qwen3 4B Instruct 2507** for local use with chores; at least with MLX on Mac, it takes up 2.5GB of space and requires 2.5GB of RAM to run.
 
   **On Apple Silicon (Mac M-series)**, we recommend [LM Studio](https://lmstudio.ai/). Click "Discover", search "Qwen3 4B Instruct 2507", and click "Download." Once downloaded, click the "Developer" tab and change the Status from Stopped to Running. Then configure chores with:

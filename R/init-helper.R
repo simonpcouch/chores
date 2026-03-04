@@ -11,8 +11,8 @@
 #' of `r glue::glue_collapse(paste0("[", glue::double_quote(default_chores), "]", "[", default_chores, "_helper", "]"), ", ", last = " or ")`,
 #' though custom helpers can be added with [prompt_new()].
 #' @param .chores_chat An ellmer Chat, e.g.
-#' `ellmer::chat_claude()`. Defaults to the `chores.chat` option,
-#' so e.g. set
+#' `ellmer::chat_claude()` or `ellmer::chat_google_gemini()`.
+#' Defaults to the `chores.chat` option, so e.g. set
 #' `options(chores.chat = ellmer::chat_claude(model = "claude-haiku-4-5"))`
 #'  in your
 #' `.Rprofile` to configure chores with ellmer every time you start a new R session.
@@ -28,6 +28,16 @@
 #'
 #' # or with OpenAI's GPT-4.1-mini:
 #' .init_helper(.chores_chat = ellmer::chat_openai(model = "gpt-4.1-mini"))
+#'
+#' # or with Google's Gemini 3 Flash:
+#' .init_helper(.chores_chat = ellmer::chat_google_gemini(
+#'   model = "gemini-3-flash-preview",
+#'   api_args = list(
+#'     generationConfig = list(
+#'       thinkingConfig = list(thinkingLevel = "minimal")
+#'     )
+#'   )
+#' ))
 #'
 #' # to set OpenAI's GPT-4.1-mini as the default model powering chores, for example,
 #' # set the following option (possibly in your .Rprofile, if you'd like
