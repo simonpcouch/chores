@@ -47,19 +47,37 @@ cloud provider, e.g. `chat_azure()`, `chat_bedrock()`,
 your own exploration, you’ll have a lot more freedom, so we have a few
 recommendations to help you get started:
 
-- As of early 2025, Anthropic’s **Claude Sonnet 3.5** is a very powerful
-  model for code assistance and is the model I’ve used while developing
-  the package. If you want to use Claude, you’ll need to register an API
-  key at `https://console.anthropic.com/` to the environment variable
-  `ANTHROPIC_API_KEY` and then set
-  `options(chores.chat = ellmer::chat_claude())`.
+- As of early 2026, Anthropic’s **Claude Haiku 4.5** is a powerful and
+  inexpensive model for code assistance. If you want to use Claude,
+  you’ll need to register an API key at `https://console.anthropic.com/`
+  to the environment variable `ANTHROPIC_API_KEY` and then set
+  `options(chores.chat = ellmer::chat_claude(model = "claude-haiku-4-5"))`.
 
-- Regarding OpenAI’s models, `chat_openai()` defaults to **GPT-4o**, but
-  you can use `model = "gpt-4o-mini"` for a cheaper, lower-quality
-  model; to use an OpenAI model, you’ll need to set the options
-  `options(chores.chat = ellmer::chat_openai(model = "gpt-4o"))` and
+- Regarding OpenAI’s models, we recommend **GPT-4.1**, or
+  `model = "gpt-4.1-mini"` for a cheaper, lower-quality model; to use an
+  OpenAI model, you’ll need to set the options
+  `options(chores.chat = ellmer::chat_openai(model = "gpt-4.1"))` and
   register your OpenAI API key with the `OPENAI_API_KEY` environment
   variable.
+
+- Google’s **Gemini 3 Flash** is also a strong option for code
+  assistance. We recommend setting the thinking level to `"minimal"` to
+  reduce latency. Register an API key at
+  `https://aistudio.google.com/apikey` to the environment variable
+  `GOOGLE_API_KEY` (or `GEMINI_API_KEY`) and then configure chores with:
+
+``` r
+options(
+  chores.chat = ellmer::chat_google_gemini(
+    model = "gemini-3-flash-preview",
+    api_args = list(
+      generationConfig = list(
+        thinkingConfig = list(thinkingLevel = "minimal")
+      )
+    )
+  )
+)
+```
 
 - You can use a **local model**, which allows you to run models on your
   own computer. Local models don’t share your data and are free to use,
