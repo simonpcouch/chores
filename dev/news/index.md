@@ -2,6 +2,8 @@
 
 ## chores (development version)
 
+## chores 0.3.1
+
 - Adjusted the recommended models in documentation.
 
   - **Anthropic**: Claude Sonnet 3.7 -\> Claude Haiku 4.5.
