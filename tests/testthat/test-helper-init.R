@@ -2,7 +2,7 @@ test_that("initializing a helper", {
   skip_if(identical(Sys.getenv("ANTHROPIC_API_KEY"), ""))
   skip_if_not_installed("withr")
   withr::local_options(
-    .chores_chat = ellmer::chat_claude(model = "claude-3-7-sonnet-20250219")
+    .chores_chat = ellmer::chat_claude(model = "claude-haiku-4-5")
   )
 
   expect_snapshot(.init_helper("cli"))
@@ -13,13 +13,13 @@ test_that("can use other models", {
   skip_if(identical(Sys.getenv("OPENAI_API_KEY"), ""))
   skip_if_not_installed("withr")
   withr::local_options(
-    .chores_chat = ellmer::chat_claude(model = "claude-3-7-sonnet-20250219")
+    .chores_chat = ellmer::chat_claude(model = "claude-haiku-4-5")
   )
 
   # respects other argument values
   expect_snapshot(.init_helper(
     "cli",
-    .chores_chat = ellmer::chat_openai(model = "gpt-4o-mini")
+    .chores_chat = ellmer::chat_openai(model = "gpt-4.1-mini")
   ))
 })
 

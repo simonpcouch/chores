@@ -56,7 +56,7 @@ fetch_chores_chat <- function(.chores_chat = get_chores_chat()) {
         {cli::col_blue('chores.chat')} option.",
         "i" = "Set e.g.
         {.code {cli::col_green('options(chores.chat = ellmer::chat_claude(model = 
-          \\\"claude-3-7-sonnet-20250219\\\"))')}}
+          \\\"claude-haiku-4-5\\\"))')}}
         in your {.file ~/.Rprofile} and restart R.",
         "i" = "See \"Choosing a model\" in
         {.code vignette(\"chores\", package = \"chores\")} to learn more."

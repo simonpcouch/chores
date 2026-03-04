@@ -3,14 +3,14 @@ test_that(".helper_last is up to date with most recent helper", {
   skip_if(identical(Sys.getenv("OPENAI_API_KEY"), ""))
   skip_if_not_installed("withr")
   withr::local_options(
-    .chores_chat = ellmer::chat_claude(model = "claude-3-7-sonnet-20250219")
+    .chores_chat = ellmer::chat_claude(model = "claude-haiku-4-5")
   )
 
   .init_helper("cli")
   expect_snapshot(env_get(chores_env(), ".helper_last"))
   expect_snapshot(env_get(chores_env(), ".helper_last_cli"))
 
-  .init_helper("cli", ellmer::chat_openai(model = "gpt-4o-mini"))
+  .init_helper("cli", ellmer::chat_openai(model = "gpt-4.1-mini"))
   expect_snapshot(env_get(chores_env(), ".helper_last"))
 })
 
